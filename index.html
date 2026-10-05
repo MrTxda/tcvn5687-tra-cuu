@@ -83,7 +83,7 @@ footer{max-width:860px; margin:0 auto; padding:0 12px 40px; font-size:12px; colo
 <button data-tab="tables">📚 Bảng tra</button>
 </nav>
 <main>
-<!-- ================= TAB 1: THEO PHÒNG ================= -->
+
 <section class="tab active" id="tab-room">
 <div class="card">
 <h3>Tra cứu theo loại phòng</h3>
@@ -98,7 +98,7 @@ footer{max-width:860px; margin:0 auto; padding:0 12px 40px; font-size:12px; colo
 <script>
 "use strict";
 const DB = TCVN_DATA;
-/* ---------- tiện ích ---------- */
+
 function khongDau(s){return (s==null?"":String(s)).normalize("NFD").replace(/đ/g,"d").replace(/Đ/g,"D").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function parseSo(s){if(s==null)return null;s=String(s).trim().replace(",",".");if(!s||s==="-")return null;
@@ -109,7 +109,7 @@ return (Math.round(x*100)/100).toString();}
 function hl(text,kw){if(!kw)return esc(text);var t=esc(String(text==null?"":text));
 try{var re=new RegExp("("+kw.trim().split(/\s+/).map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}).join("|")+")","gi");
 return t.replace(re,"<mark>$1</mark>");}catch(e){return t;}}
-/* ---------- chuyển tab ---------- */
+
 document.getElementById("tabbar").addEventListener("click",function(e){
 var b=e.target.closest("button");if(!b)return;
 document.querySelectorAll("#tabbar button").forEach(function(x){x.classList.remove("active");});
@@ -122,11 +122,10 @@ window.scrollTo(0,0);
 
 <script>
 "use strict";
-/* ================= TAB 1: TRA CỨU THEO PHÒNG ================= */
+
 (function(){
 var e1=DB.bangE1.hang, f1=DB.bangF1.hang;
 var aRows=DB.bangA1.hang.concat(DB.bangA2.hang);
-// gợi ý datalist: gom tên phòng các bảng
 var names={};
 e1.forEach(function(r){names[r.ten_phong]=1;});
 f1.forEach(function(r){names[r.loai_phong_khong_gian]=1;});
@@ -211,7 +210,6 @@ document.getElementById("room-q").addEventListener("keydown",function(e){if(e.ke
 })();
 </script>
 
-<!-- ================= TAB 2: TÍNH NHANH ================= -->
 <section class="tab" id="tab-calc">
 <div class="card">
 <h3>🧮 Tính lưu lượng gió tươi (Bảng E.1)</h3>
@@ -284,7 +282,7 @@ var p=parseFloat(document.getElementById("calc-b1-p").value);
 var row=null;b.hang.forEach(function(r){if(r.cap_do_kin===cap)row=r;});
 box.style.display="block";
 if(!row||!(p>=0)){box.textContent="Nhập áp suất hợp lệ.";return;}
-var keys=b.cot.slice(1); // giữ nguyên chuỗi gốc "0,2"…"5,0" để tra đúng key
+var keys=b.cot.slice(1);
 var nearKey=keys.reduce(function(a,c){return Math.abs(parseSo(c)-p)<Math.abs(parseSo(a)-p)?c:a;});
 var val=row.gia_tri[nearKey];
 box.innerHTML="Cấp "+cap+" · áp suất ≈ "+esc(nearKey)+" Pa:<br>"
@@ -294,7 +292,6 @@ box.innerHTML="Cấp "+cap+" · áp suất ≈ "+esc(nearKey)+" Pa:<br>"
 })();
 </script>
 
-<!-- ================= TAB 3: PHÂN LOẠI ================= -->
 <section class="tab" id="tab-classify">
 <div class="card">
 <h3>🏷️ Phân loại hệ thống TG-ĐHKK</h3>
@@ -370,7 +367,7 @@ steps.forEach(function(st){t+="- "+st.k+": "+(ans[st.k]||"")+"\n";});
 navigator.clipboard.writeText(t).then(function(){alert("Đã chép phiếu phân loại.");});
 };
 render();
-/* ---- van ---- */
+
 var subVans=["Van ngăn cháy thường mở (đóng khi có cháy)","Van ngăn cháy thường đóng (mở khi có cháy hoặc sau cháy)","Van ngăn cháy kép (đóng khi có cháy và mở sau cháy)"];
 window.vanInfo=function(i){
 var t=DB.van_types[i],box=document.getElementById("van-r");
@@ -383,7 +380,6 @@ box.innerHTML=h;box.scrollIntoView({behavior:"smooth",block:"nearest"});
 })();
 </script>
 
-<!-- ================= TAB 4: TÌM KIẾM ================= -->
 <section class="tab" id="tab-search">
 <div class="card">
 <h3>🔍 Tìm kiếm tự do</h3>
@@ -460,7 +456,6 @@ document.getElementById("s-q").addEventListener("keydown",function(e){if(e.key==
 })();
 </script>
 
-<!-- ================= TAB 5: BẢNG TRA ================= -->
 <section class="tab" id="tab-tables">
 <div id="lib"></div>
 </section>
@@ -473,17 +468,14 @@ rows.forEach(function(r){h+="<tr>"+fmt(r).map(function(c){return "<td>"+c+"</td>
 return h+"</table></div>";
 }
 var L="";
-// E.1
 L+='<details class="acc" open><summary>Bảng E.1 — Tiêu chuẩn gió tươi (55 loại phòng · tr.70–72)</summary><div class="body">'
 +tbl(["Loại phòng","m²/người","m³/h.người","m³/h.m²","Ghi chú"],DB.bangE1.hang,function(r){
 return [esc(r.ten_phong),esc(r.dien_tich_m2_nguoi),"<b>"+esc(r.luong_kk_m3h_nguoi)+"</b>","<b>"+esc(r.luong_kk_m3h_m2)+"</b>",esc(r.ghi_chu||"")];})
 +'</div></details>';
-// F.1
 L+='<details class="acc"><summary>Bảng F.1 — Số lần trao đổi không khí (tr.73)</summary><div class="body">'
 +tbl(["Loại phòng, công trình","Số lần (lần/h)","Ghi chú"],DB.bangF1.hang,function(r){
 return [esc(r.loai_phong_khong_gian),"<b>"+esc(r.so_lan_trao_doi)+"</b>",esc(r.ghi_chu||"")];})
 +'</div></details>';
-// A.1 + A.2
 [["bangA1","Bảng A.1 (tr.39)"],["bangA2","Bảng A.2 (tr.40–41)"]].forEach(function(x){
 L+='<details class="acc"><summary>'+x[1]+' — Thông số tính toán trong nhà</summary><div class="body">'
 +tbl(["Điều kiện","Phòng","t° tiện nghi","t° cho phép","v gió tiện nghi","v gió tối đa","Độ ẩm %"],DB[x[0]].hang,function(r){
@@ -491,7 +483,6 @@ return [esc(r.mua),esc(r.phong),esc(r.nhiet_do_tien_nghi)+" °C",esc(r.nhiet_do_
 esc(r.toc_do_gio_tien_nghi)+" m/s",esc(r.toc_do_gio_toi_da_cho_phep)+" m/s",esc(r.do_am_tuong_doi)+" %"];})
 +'</div></details>';
 });
-// G.1, H.1
 L+='<details class="acc"><summary>Bảng G.1 — Chênh lệch áp suất chống khói (tr.77)</summary><div class="body">'
 +tbl(["Loại công trình","Chiều cao trần (m)","ΔP (Pa)"],DB.bangG1.hang,function(r){
 return [esc(r.doi_tuong),esc(r.chieu_cao_tran),"<b>"+esc(r.chenh_lech_ap_suat)+"</b>"];})
@@ -500,20 +491,16 @@ L+='<details class="acc"><summary>Bảng H.1 — Hệ số theo chiều rộng c
 +tbl(["Loại công trình","Chiều rộng cửa","Hệ số"],DB.bangH1.hang,function(r){
 return [esc(r.loai_cong_trinh),esc(r.chieu_rong_cua),"<b>"+esc(r.he_so)+"</b>"];})
 +'</div></details>';
-// Van
 L+='<details class="acc"><summary>Phân loại van (Điều 3.32–3.34)</summary><div class="body">';
 DB.van_types.forEach(function(t){L+='<p><b>'+esc(t.loai_van)+'</b><br><span class="small">'+esc(t.dinh_nghia)+'</span></p>';});
 L+='<p class="small">Van ngăn cháy gồm 3 dạng: thường mở (đóng khi có cháy) · thường đóng (mở khi có cháy/sau cháy) · kép.</p></div></details>';
-// Dieu 7
 L+='<details class="acc"><summary>Hệ thống bảo vệ chống khói — Điều 7</summary><div class="body">';
 DB.dieu7_systems.forEach(function(x){
 L+='<div class="hit"><div class="t">'+esc(x.loai_he_thong)+' <span class="small">['+esc(x.dieu_khoan||"")+']</span></div><div class="d">'+esc(x.mo_ta_ngan)+'</div></div>';});
 L+='</div></details>';
-// Dieu 4.7
 L+='<details class="acc"><summary>Phân loại hệ thống ĐHKK — Điều 4.7.1 &amp; Hình 1 (tr.15–16)</summary><div class="body"><ul>'
 +DB.dieu47.map(function(d){return "<li>"+esc(d.noi_dung)+"</li>";}).join("")+'</ul>'
 +'<p class="small">Cấp TSTT ngoài trời (5.2.2): Cấp I (m=35 h/năm) — đặc biệt quan trọng · Cấp II (m=150–200 h/năm) — thông thường · Cấp III (m=350–400 h/năm) — không đòi hỏi cao.</p></div></details>';
-// Bang D
 L+='<details class="acc"><summary>Phụ lục D — Giới hạn tiếp xúc hóa chất/bụi (tr.66–69)</summary><div class="body"><ul>'
 +DB.bangD.map(function(b){return "<li><b>"+esc(b.ten_bang)+"</b> — "+esc(b.tieu_de)+" <span class='small'>(tr."+esc(b.trang)+")</span></li>";}).join("")
 +'</ul><p class="small">Chi tiết từng chất xem trực tiếp trong văn bản tiêu chuẩn.</p></div></details>';

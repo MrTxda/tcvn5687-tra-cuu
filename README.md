@@ -11,7 +11,10 @@ gồm **web app** (dùng trên trình duyệt, offline 100%) và **chương trì
 
 ## Dùng offline (không cần mạng)
 
-Tải file `web/index.html` (bản 1 file duy nhất, dữ liệu nhúng sẵn) về máy/điện thoại → mở bằng trình duyệt là dùng ngay.
+Tải file `web/index.html` (bản 1 file duy nhất, thuần HTML, dữ liệu nhúng sẵn) về máy/điện thoại → mở bằng trình duyệt là dùng ngay.
+
+- ⬇️ **Link tải trực tiếp:** https://github.com/MrTxda/tcvn5687-tra-cuu/blob/main/web/index.html (nhấn nút Download)
+- 🌐 **Mở chạy ngay / lưu về (Ctrl+S):** https://cdn.jsdelivr.net/gh/MrTxda/tcvn5687-tra-cuu@main/web/index.html
 
 Hoặc tự build từ mã nguồn:
 
