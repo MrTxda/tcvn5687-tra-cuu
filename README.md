@@ -3,8 +3,6 @@
 Công cụ tra cứu nhanh tiêu chuẩn **TCVN 5687:2024** *Thông gió – Điều hòa không khí: Yêu cầu thiết kế*,
 gồm **web app 1 file HTML** (mở là chạy, offline 100%, dùng tốt trên điện thoại) và **chương trình dòng lệnh Python**.
 
-> Lấy cảm hứng kiến trúc từ [Hvdo42/qcvn06-tra-cuu](https://github.com/Hvdo42/qcvn06-tra-cuu) — xin cảm ơn tác giả Võ Đỗ Hùng.
-
 ## Tuyên bố miễn trách nhiệm
 
 > Công cụ này chỉ phục vụ mục đích **tra cứu nhanh và tham khảo cá nhân**.
