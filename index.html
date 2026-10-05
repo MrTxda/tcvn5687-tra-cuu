@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCVN 5687:2024 — Tra cứu nhanh TG-ĐHKK</title>
+<style>
+:root{
+color-scheme: light;
+--bg:#f4f6f8; --card:#ffffff; --ink:#1c2733; --muted:#66788a;
+--brand:#0b6e4f; --brand-d:#095c42; --accent:#e8f5ee;
+--line:#e2e8f0; --warn:#b45309; --radius:12px;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+background:var(--bg); color:var(--ink); font-size:15px; line-height:1.55;}
+header{background:linear-gradient(135deg,var(--brand-d),var(--brand)); color:#fff; padding:18px 16px 14px;}
+header h1{margin:0; font-size:19px;}
+header p{margin:4px 0 0; font-size:13px; opacity:.9;}
+nav.tabs{position:sticky; top:0; z-index:10; background:var(--card); display:flex; overflow-x:auto;
+border-bottom:1px solid var(--line); box-shadow:0 1px 4px rgba(0,0,0,.05);}
+nav.tabs button{flex:1 0 auto; border:0; background:none; padding:12px 14px; font-size:14px; font-weight:600;
+color:var(--muted); border-bottom:3px solid transparent; cursor:pointer; white-space:nowrap;}
+nav.tabs button.active{color:var(--brand); border-bottom-color:var(--brand);}
+main{max-width:860px; margin:0 auto; padding:14px 12px 90px;}
+.tab{display:none;} .tab.active{display:block;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+padding:14px; margin:12px 0; box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.card h3{margin:0 0 8px; font-size:16px; color:var(--brand-d);}
+.kv{display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:14px;}
+.kv:last-child{border-bottom:0;}
+.kv .k{color:var(--muted);} .kv .v{font-weight:600; text-align:right;}
+.badge{display:inline-block; font-size:12px; font-weight:700; background:var(--accent); color:var(--brand-d);
+border-radius:20px; padding:2px 10px; margin:2px 4px 2px 0;}
+.src{font-size:12px; color:var(--muted); margin-top:8px;}
+.note{background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px; font-size:13px; margin:8px 0;}
+input[type=text],input[type=number],select{width:100%; padding:11px 12px; font-size:15px;
+border:1px solid var(--line); border-radius:10px; margin:6px 0; background:#fff; color:var(--ink);}
+button.btn{background:var(--brand); color:#fff; border:0; border-radius:10px; padding:11px 18px;
+font-size:15px; font-weight:700; cursor:pointer; margin:6px 0;}
+button.btn:active{background:var(--brand-d);}
+button.ghost{background:#fff; color:var(--brand); border:1px solid var(--brand);}
+.row{display:flex; gap:8px;} .row>*{flex:1;}
+.result{background:var(--accent); border-radius:10px; padding:12px; font-size:16px; font-weight:700;
+color:var(--brand-d); margin:10px 0; text-align:center;}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;}
+.chip{border:1px solid var(--line); background:#fff; border-radius:20px; padding:6px 12px; font-size:13px; cursor:pointer;}
+.chip.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+.hit{border-bottom:1px solid var(--line); padding:10px 2px;}
+.hit .t{font-weight:700;} .hit .d{font-size:13px; color:var(--muted);}
+mark{background:#fef08a; border-radius:3px; padding:0 2px;}
+table.data{width:100%; border-collapse:collapse; font-size:13px; margin:8px 0;}
+table.data th,table.data td{border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top;}
+table.data th{background:var(--accent); color:var(--brand-d); font-size:12px;}
+details.acc{border:1px solid var(--line); border-radius:var(--radius); margin:10px 0; background:var(--card); overflow:hidden;}
+details.acc summary{padding:13px 14px; font-weight:700; cursor:pointer; background:#fff; list-style:none;}
+details.acc summary::-webkit-details-marker{display:none;}
+details.acc summary::after{content:"+"; float:right; color:var(--brand); font-size:18px;}
+details.acc[open] summary::after{content:"–";}
+details.acc .body{padding:0 14px 14px;}
+.q{font-weight:700; margin:12px 0 6px;}
+.opt{display:block; width:100%; text-align:left; background:#fff; color:#1c2733 !important;
+border:1px solid var(--line); border-radius:10px; padding:11px 12px; margin:6px 0;
+font-size:14px; font-family:inherit; cursor:pointer;}
+.opt.sel{border-color:var(--brand); background:var(--accent); color:#1c2733 !important;}
+footer{max-width:860px; margin:0 auto; padding:0 12px 40px; font-size:12px; color:var(--muted);}
+.stepbar{display:flex; gap:4px; margin:10px 0;}
+.stepbar span{flex:1; height:5px; border-radius:3px; background:var(--line);}
+.stepbar span.done{background:var(--brand);}
+.small{font-size:13px; color:var(--muted);}
+</style>
+</head>
+<body>
+<header>
+<h1>🌬️ TCVN 5687:2024 — Tra cứu nhanh</h1>
+<p>Thông gió &amp; Điều hòa không khí · Yêu cầu thiết kế · Chạy offline 100%</p>
+</header>
+<nav class="tabs" id="tabbar">
+<button data-tab="room" class="active">🏠 Theo phòng</button>
+<button data-tab="calc">🧮 Tính nhanh</button>
+<button data-tab="classify">🏷️ Phân loại</button>
+<button data-tab="search">🔍 Tìm kiếm</button>
+<button data-tab="tables">📚 Bảng tra</button>
+</nav>
+<main>
+<!-- ================= TAB 1: THEO PHÒNG ================= -->
+<section class="tab active" id="tab-room">
+<div class="card">
+<h3>Tra cứu theo loại phòng</h3>
+<p class="small">Nhập tên phòng (gõ không dấu vẫn được, ví dụ: <i>phong hop</i>, <i>nha bep</i>, <i>phong mo</i>) — app gom toàn bộ yêu cầu áp dụng: gió tươi, bội số trao đổi khí, thông số nhiệt–ẩm.</p>
+<input type="text" id="room-q" placeholder="Nhập loại phòng…" autocomplete="off" list="room-list">
+<datalist id="room-list"></datalist>
+<button class="btn" onclick="roomSearch()">Tra cứu</button>
+</div>
+<div id="room-results"></div>
+</section>
+<script src="data/tcvn5687_data.js"></script>
+<script>
+"use strict";
+const DB = TCVN_DATA;
+/* ---------- tiện ích ---------- */
+function khongDau(s){return (s==null?"":String(s)).normalize("NFD").replace(/đ/g,"d").replace(/Đ/g,"D").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function parseSo(s){if(s==null)return null;s=String(s).trim().replace(",",".");if(!s||s==="-")return null;
+var m=s.match(/^(-?[\d.]+)\s*-\s*(-?[\d.]+)$/);if(m){return[(+m[1]),(+m[2])];}
+var n=parseFloat(s);return isNaN(n)?null:n;}
+function fmtSo(x){if(x==null)return "-";if(Array.isArray(x))return fmtSo(x[0])+" – "+fmtSo(x[1]);
+return (Math.round(x*100)/100).toString();}
+function hl(text,kw){if(!kw)return esc(text);var t=esc(String(text==null?"":text));
+try{var re=new RegExp("("+kw.trim().split(/\s+/).map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}).join("|")+")","gi");
+return t.replace(re,"<mark>$1</mark>");}catch(e){return t;}}
+/* ---------- chuyển tab ---------- */
+document.getElementById("tabbar").addEventListener("click",function(e){
+var b=e.target.closest("button");if(!b)return;
+document.querySelectorAll("#tabbar button").forEach(function(x){x.classList.remove("active");});
+b.classList.add("active");
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active");});
+document.getElementById("tab-"+b.dataset.tab).classList.add("active");
+window.scrollTo(0,0);
+});
+</script>
+
+<script>
+"use strict";
+/* ================= TAB 1: TRA CỨU THEO PHÒNG ================= */
+(function(){
+var e1=DB.bangE1.hang, f1=DB.bangF1.hang;
+var aRows=DB.bangA1.hang.concat(DB.bangA2.hang);
+// gợi ý datalist: gom tên phòng các bảng
+var names={};
+e1.forEach(function(r){names[r.ten_phong]=1;});
+f1.forEach(function(r){names[r.loai_phong_khong_gian]=1;});
+aRows.forEach(function(r){names[r.phong.replace(/^\d+\.\s*/,"")]=1;});
+var dl=document.getElementById("room-list");
+Object.keys(names).sort().forEach(function(n){
+var o=document.createElement("option");o.value=n;dl.appendChild(o);
+});
+function tim(rows,kw,fields){
+var k=khongDau(kw);if(!k)return[];
+var out=[];
+rows.forEach(function(r){
+var hay=fields.map(function(f){return khongDau(r[f]);}).join(" ");
+var p=hay.indexOf(k);if(p>=0)out.push([p,r]);
+});
+out.sort(function(a,b){return a[0]-b[0];});
+return out.slice(0,8).map(function(x){return x[1];});
+}
+window.roomSearch=function(){
+var kw=document.getElementById("room-q").value.trim();
+var box=document.getElementById("room-results");box.innerHTML="";
+if(!kw){box.innerHTML='<div class="card"><p class="small">Nhập tên loại phòng rồi bấm Tra cứu.</p></div>';return;}
+var rE1=tim(e1,kw,["ten_phong"]), rF1=tim(f1,kw,["loai_phong_khong_gian"]),
+rA=tim(aRows,kw,["phong"]);
+if(!rE1.length&&!rF1.length&&!rA.length){
+box.innerHTML='<div class="card"><p>Không tìm thấy loại phòng nào với "'+esc(kw)+'". Thử từ khóa ngắn hơn.</p></div>';return;
+}
+var h="";
+rE1.forEach(function(r,i){
+var qn=parseSo(r.luong_kk_m3h_nguoi), qm=parseSo(r.luong_kk_m3h_m2);
+h+='<div class="card"><h3>🌿 '+esc(r.ten_phong)+'</h3>'
++'<span class="badge">Gió tươi · Bảng E.1</span>'
++'<div class="kv"><span class="k">Diện tích bình quân</span><span class="v">'+esc(r.dien_tich_m2_nguoi)+' m²/người</span></div>'
++'<div class="kv"><span class="k">Lưu lượng/người</span><span class="v">'+esc(r.luong_kk_m3h_nguoi)+' m³/h.người</span></div>'
++'<div class="kv"><span class="k">Lưu lượng/m²</span><span class="v">'+esc(r.luong_kk_m3h_m2)+' m³/h.m²</span></div>'
++(r.ghi_chu?'<div class="note">'+esc(r.ghi_chu)+'</div>':"")
++'<div class="row">'
++(qn!=null&&!Array.isArray(qn)?'<div><input type="number" id="e1n'+i+'" placeholder="Số người"><button class="btn ghost" onclick="roomCalcE1('+i+',\'n\')">Tính</button></div>':"")
++(qm!=null&&!Array.isArray(qm)?'<div><input type="number" id="e1s'+i+'" placeholder="Diện tích m²"><button class="btn ghost" onclick="roomCalcE1('+i+',\'s\')">Tính</button></div>':"")
++'</div><div class="result" id="e1r'+i+'" style="display:none"></div>'
++'<div class="src">Nguồn: Bảng E.1, TCVN 5687:2024 (trang 70–72)</div></div>';
+window["_e1_"+i]={qn:qn,qm:qm};
+});
+rF1.forEach(function(r,i){
+var n=parseSo(r.so_lan_trao_doi);
+h+='<div class="card"><h3>🔄 '+esc(r.loai_phong_khong_gian)+'</h3>'
++'<span class="badge">Bội số trao đổi khí · Bảng F.1</span>'
++'<div class="kv"><span class="k">Số lần trao đổi</span><span class="v">'+esc(r.so_lan_trao_doi)+' '+(r.don_vi||"lần/h")+'</span></div>'
++(r.ghi_chu?'<div class="note">'+esc(r.ghi_chu)+'</div>':"")
++(n!=null&&!Array.isArray(n)?'<div class="row"><div><input type="number" id="f1v'+i+'" placeholder="Thể tích phòng (m³)"></div><div><button class="btn ghost" onclick="roomCalcF1('+i+')">Tính lưu lượng</button></div></div><div class="result" id="f1r'+i+'" style="display:none"></div>':"")
++'<div class="src">Nguồn: Bảng F.1, TCVN 5687:2024 (trang 73)</div></div>';
+window["_f1_"+i]=n;
+});
+rA.forEach(function(r){
+h+='<div class="card"><h3>🌡️ '+esc(r.phong)+'</h3>'
++'<span class="badge">Thông số trong nhà · Phụ lục A</span> <span class="badge">'+esc(r.mua)+'</span>'
++'<div class="kv"><span class="k">Nhiệt độ tiện nghi</span><span class="v">'+esc(r.nhiet_do_tien_nghi)+' °C</span></div>'
++'<div class="kv"><span class="k">Nhiệt độ giới hạn cho phép</span><span class="v">'+esc(r.nhiet_do_gioi_han_cho_phep)+' °C</span></div>'
++'<div class="kv"><span class="k">Tốc độ gió tiện nghi</span><span class="v">'+esc(r.toc_do_gio_tien_nghi)+' m/s</span></div>'
++'<div class="kv"><span class="k">Tốc độ gió tối đa cho phép</span><span class="v">'+esc(r.toc_do_gio_toi_da_cho_phep)+' m/s</span></div>'
++'<div class="kv"><span class="k">Độ ẩm tương đối</span><span class="v">'+esc(r.do_am_tuong_doi)+' %</span></div>'
++'<div class="src">Nguồn: Phụ lục A, TCVN 5687:2024 (trang 39–41)</div></div>';
+});
+box.innerHTML=h;
+};
+window.roomCalcE1=function(i,mode){
+var d=window["_e1_"+i],box=document.getElementById("e1r"+i);
+var val=parseFloat(document.getElementById(mode==="n"?"e1n"+i:"e1s"+i).value);
+if(!(val>0)){box.style.display="block";box.textContent="Nhập số hợp lệ.";return;}
+var q=mode==="n"?d.qn*val:d.qm*val;
+box.style.display="block";
+box.textContent="Lưu lượng gió tươi tối thiểu: "+fmtSo(q)+" m³/h";
+};
+window.roomCalcF1=function(i){
+var n=window["_f1_"+i],box=document.getElementById("f1r"+i);
+var v=parseFloat(document.getElementById("f1v"+i).value);
+if(!(v>0)){box.style.display="block";box.textContent="Nhập thể tích hợp lệ.";return;}
+box.style.display="block";
+box.textContent="Lưu lượng thông gió: "+fmtSo(n*v)+" m³/h";
+};
+document.getElementById("room-q").addEventListener("keydown",function(e){if(e.key==="Enter")roomSearch();});
+})();
+</script>
+
+<!-- ================= TAB 2: TÍNH NHANH ================= -->
+<section class="tab" id="tab-calc">
+<div class="card">
+<h3>🧮 Tính lưu lượng gió tươi (Bảng E.1)</h3>
+<select id="calc-e1-room"></select>
+<div class="row">
+<input type="number" id="calc-e1-n" placeholder="Số người">
+<input type="number" id="calc-e1-s" placeholder="Diện tích (m²)">
+</div>
+<button class="btn" onclick="calcE1()">Tính</button>
+<div class="result" id="calc-e1-r" style="display:none"></div>
+<p class="small" id="calc-e1-info"></p>
+</div>
+<div class="card">
+<h3>🧮 Tính theo bội số trao đổi khí (Bảng F.1)</h3>
+<select id="calc-f1-room"></select>
+<input type="number" id="calc-f1-v" placeholder="Thể tích phòng (m³) = dài × rộng × cao">
+<button class="btn" onclick="calcF1()">Tính</button>
+<div class="result" id="calc-f1-r" style="display:none"></div>
+</div>
+<div class="card">
+<h3>🧮 Rò rỉ gió qua khe hở ống gió (Bảng 1, trang 24)</h3>
+<div class="row">
+<select id="calc-b1-cap"><option value="BT">Cấp kín BT</option><option value="K">Cấp kín K</option></select>
+<input type="number" id="calc-b1-p" placeholder="Áp suất tĩnh dư (Pa)">
+</div>
+<button class="btn" onclick="calcB1()">Tra cứu</button>
+<div class="result" id="calc-b1-r" style="display:none"></div>
+<p class="small">Đơn vị: m³/h cho 1 m² diện tích khai triển ống. Lấy theo cột áp suất gần nhất.<br>
+<b>Lưu ý (6.11.8):</b> dùng cấp <b>K</b> khi áp suất tĩnh tại quạt &gt; 1 400 Pa, cho hệ thống hút thải cục bộ và hệ thống ĐHKK; các trường hợp còn lại dùng cấp <b>BT</b>.</p>
+</div>
+</section>
+<script>
+"use strict";
+(function(){
+var e1=DB.bangE1.hang, f1=DB.bangF1.hang;
+var se=document.getElementById("calc-e1-room");
+e1.forEach(function(r,i){var o=document.createElement("option");o.value=i;
+o.textContent=r.ten_phong+" ("+r.luong_kk_m3h_nguoi+" m³/h.ng | "+r.luong_kk_m3h_m2+" m³/h.m²)";se.appendChild(o);});
+var sf=document.getElementById("calc-f1-room");
+f1.forEach(function(r,i){var o=document.createElement("option");o.value=i;
+o.textContent=r.loai_phong_khong_gian+" ("+r.so_lan_trao_doi+" lần/h)";sf.appendChild(o);});
+function updE1info(){
+var r=e1[+se.value];
+document.getElementById("calc-e1-info").textContent=
+"Định mức: "+r.luong_kk_m3h_nguoi+" m³/h.người | "+r.luong_kk_m3h_m2+" m³/h.m²"
++(r.ghi_chu?(" — "+r.ghi_chu):"");
+}
+se.addEventListener("change",updE1info);updE1info();
+window.calcE1=function(){
+var r=e1[+se.value],box=document.getElementById("calc-e1-r");
+var n=parseFloat(document.getElementById("calc-e1-n").value),
+s=parseFloat(document.getElementById("calc-e1-s").value);
+var qn=parseSo(r.luong_kk_m3h_nguoi),qm=parseSo(r.luong_kk_m3h_m2),out=[];
+if(n>0&&qn!=null&&!Array.isArray(qn))out.push(fmtSo(qn*n)+" m³/h (theo "+n+" người)");
+if(s>0&&qm!=null&&!Array.isArray(qm))out.push(fmtSo(qm*s)+" m³/h (theo "+s+" m²)");
+box.style.display="block";
+box.innerHTML=out.length?("Lưu lượng gió tươi tối thiểu:<br>"+out.join("<br>")):"Nhập số người hoặc diện tích.";
+};
+window.calcF1=function(){
+var r=f1[+sf.value],box=document.getElementById("calc-f1-r");
+var v=parseFloat(document.getElementById("calc-f1-v").value),n=parseSo(r.so_lan_trao_doi);
+box.style.display="block";
+if(!(v>0)||n==null||Array.isArray(n)){box.textContent="Nhập thể tích hợp lệ.";return;}
+box.innerHTML="Lưu lượng thông gió:<br>"+fmtSo(n)+" × "+fmtSo(v)+" = <b>"+fmtSo(n*v)+" m³/h</b>";
+};
+window.calcB1=function(){
+var b=DB.bang1,box=document.getElementById("calc-b1-r");
+var cap=document.getElementById("calc-b1-cap").value;
+var p=parseFloat(document.getElementById("calc-b1-p").value);
+var row=null;b.hang.forEach(function(r){if(r.cap_do_kin===cap)row=r;});
+box.style.display="block";
+if(!row||!(p>=0)){box.textContent="Nhập áp suất hợp lệ.";return;}
+var keys=b.cot.slice(1); // giữ nguyên chuỗi gốc "0,2"…"5,0" để tra đúng key
+var nearKey=keys.reduce(function(a,c){return Math.abs(parseSo(c)-p)<Math.abs(parseSo(a)-p)?c:a;});
+var val=row.gia_tri[nearKey];
+box.innerHTML="Cấp "+cap+" · áp suất ≈ "+esc(nearKey)+" Pa:<br>"
++((val&&val!=="-")?("<b>"+esc(val)+" m³/h</b> / 1 m² ống")
+:("Bảng không quy định giá trị tại mức áp suất này (—)"));
+};
+})();
+</script>
+
+<!-- ================= TAB 3: PHÂN LOẠI ================= -->
+<section class="tab" id="tab-classify">
+<div class="card">
+<h3>🏷️ Phân loại hệ thống TG-ĐHKK</h3>
+<p class="small">Theo 8 tiêu chí Điều 4.7.1 + cấp TSTT Điều 5.2.2. Mục <b>[TC]</b> trích nguyên văn tiêu chuẩn, <b>[TK]</b> là gợi ý tham khảo thực tế.</p>
+<div id="wiz"></div>
+</div>
+<div class="card">
+<h3>🔩 Phân loại van</h3>
+<p class="small">Chọn trường hợp lắp đặt để xác định loại van theo Điều 3.32–3.34:</p>
+<button class="opt" onclick="vanInfo(0)">1. Van phân nhánh ống gió tại mỗi tầng từ ống gom đứng → <b>Van gió</b> (3.32)</button>
+<button class="opt" onclick="vanInfo(1)">2. Van trên lỗ mở giếng hút khói ở hành lang/sảnh, thường đóng, chịu lửa E → <b>Van khói</b> (3.33)</button>
+<button class="opt" onclick="vanInfo(2)">3. Van che chắn kênh gió/lỗ mở kết cấu bao che, chịu lửa EI → <b>Van ngăn cháy</b> (3.34)</button>
+<div id="van-r"></div>
+</div>
+</section>
+<script>
+"use strict";
+(function(){
+var steps=[
+{k:"a) Mục đích sử dụng [TC]",q:"[TC] a) Mục đích sử dụng:",opts:["Điều hòa tiện nghi","Điều hòa công nghệ"]},
+{k:"Cấp TSTT ngoài trời (5.2.2) [TC]",q:"[TC] Cấp TSTT ngoài trời (Điều 5.2.2):",opts:["Cấp I — công trình có công năng đặc biệt quan trọng (m=35 h/năm)","Cấp II — công trình công năng thông thường (m=150–200 h/năm)","Cấp III — không đòi hỏi cao về nhiệt ẩm (m=350–400 h/năm)"]},
+{k:"c) Tính tập trung [TK]",q:"[TK] c) Tính tập trung:",opts:["Tập trung (trung tâm — 1 gian máy cấp nhiều khu vực)","Cục bộ (độc lập từng phòng)"]},
+{k:"d) Cách làm lạnh không khí [TK]",q:"[TK] d) Cách làm lạnh không khí:",opts:["Gián tiếp qua nước lạnh (chiller/AHU/FCU)","Trực tiếp bằng môi chất bay hơi (DX, VRV/VRF)"]},
+{k:"e) Cách phân phối không khí [TK]",q:"[TK] e) Cách phân phối không khí:",opts:["Toàn gió (all-air)","Gió – nước (air-water)"]},
+{k:"f) Năng suất lạnh [TK]",q:"[TK] f) Năng suất lạnh:",free:"Nhập năng suất (kW hoặc TR), bỏ qua nếu chưa rõ"},
+{k:"g) Chức năng [TC]",q:"[TC] g) Chức năng:",opts:["Chỉ làm lạnh","Làm lạnh và sưởi ấm"]},
+{k:"h) Cách bố trí dàn lạnh [TK]",q:"[TK] h) Cách bố trí dàn lạnh:",free:"Ví dụ: âm trần nối ống gió / treo tường / cassette / đặt sàn"}
+];
+var idx=0,ans={};
+var wiz=document.getElementById("wiz");
+function render(){
+if(idx>=steps.length){renderResult();return;}
+var st=steps[idx],h='<div class="stepbar">';
+for(var i=0;i<steps.length;i++)h+='<span class="'+(i<idx?"done":"")+'"></span>';
+h+='</div><div class="q">'+esc(st.q)+'</div>';
+if(st.opts){
+st.opts.forEach(function(o,j){
+h+='<button class="opt'+(ans[st.k]===o?" sel":"")+'" onclick="wizPick('+j+')">'+esc(o)+'</button>';
+});
+}else{
+h+='<input type="text" id="wiz-free" placeholder="'+esc(st.free||"")+'" value="'+esc(ans[st.k]||"")+'">'
++'<button class="btn" onclick="wizNext()">Tiếp tục →</button>';
+}
+wiz.innerHTML=h;
+var fi=document.getElementById("wiz-free");
+if(fi){fi.addEventListener("keydown",function(e){if(e.key==="Enter")wizNext();});fi.focus();}
+}
+window.wizPick=function(j){ans[steps[idx].k]=steps[idx].opts[j];idx++;render();};
+window.wizNext=function(){
+var v=document.getElementById("wiz-free").value.trim();
+ans[steps[idx].k]=v||"(chưa xác định)";idx++;render();
+};
+window.wizBack=function(){if(idx>0){idx--;render();}};
+window.wizRestart=function(){idx=0;ans={};render();};
+function renderResult(){
+var capB={"Cấp I":"Đặc biệt quan trọng","Cấp II":"Thông thường","Cấp III":"Không đòi hỏi cao"};
+var capKey=Object.keys(capB).find(function(k){return (ans["Cấp TSTT ngoài trời (5.2.2) [TC]"]||"").indexOf(k)===0;});
+var h='<div class="card" style="border-color:var(--brand)"><h3>📋 Phiếu phân loại hệ thống TG-ĐHKK</h3>';
+steps.forEach(function(st){
+var v=ans[st.k]||"(chưa xác định)";
+h+='<div class="kv"><span class="k">'+esc(st.k)+'</span><span class="v">'+esc(v)+'</span></div>';
+});
+h+='<div class="kv"><span class="k">b) Tính chất quan trọng [TC]</span><span class="v">'+esc(capB[capKey]||"—")+'</span></div>';
+h+='<div class="src">Căn cứ: Điều 4.7.1 (a–h), Điều 5.2.2, Hình 1 — TCVN 5687:2024</div>'
++'<div class="row"><button class="btn ghost" onclick="wizBack()">← Sửa lại</button>'
++'<button class="btn ghost" onclick="wizRestart()">Làm lại</button>'
++'<button class="btn" onclick="wizCopy()">📋 Chép phiếu</button></div></div>';
+wiz.innerHTML=h;
+}
+window.wizCopy=function(){
+var t="PHIẾU PHÂN LOẠI HỆ THỐNG TG-ĐHKK (TCVN 5687:2024)\n";
+steps.forEach(function(st){t+="- "+st.k+": "+(ans[st.k]||"")+"\n";});
+navigator.clipboard.writeText(t).then(function(){alert("Đã chép phiếu phân loại.");});
+};
+render();
+/* ---- van ---- */
+var subVans=["Van ngăn cháy thường mở (đóng khi có cháy)","Van ngăn cháy thường đóng (mở khi có cháy hoặc sau cháy)","Van ngăn cháy kép (đóng khi có cháy và mở sau cháy)"];
+window.vanInfo=function(i){
+var t=DB.van_types[i],box=document.getElementById("van-r");
+var h='<div class="card" style="border-color:var(--brand)"><h3>'+esc(t.loai_van)+'</h3><p>'+esc(t.dinh_nghia)+'</p>';
+if(i===2){h+='<p><b>Gồm 3 dạng:</b></p><ul>'+subVans.map(function(s){return "<li>"+esc(s)+"</li>";}).join("")+"</ul>";}
+else if(t.cac_dang_con){h+="<ul>"+t.cac_dang_con.map(function(s){return "<li>"+esc(s)+"</li>";}).join("")+"</ul>";}
+h+='<div class="src">Nguồn: Điều 3.32–3.34, TCVN 5687:2024</div></div>';
+box.innerHTML=h;box.scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+})();
+</script>
+
+<!-- ================= TAB 4: TÌM KIẾM ================= -->
+<section class="tab" id="tab-search">
+<div class="card">
+<h3>🔍 Tìm kiếm tự do</h3>
+<p class="small">Tìm trong 306 điều khoản, 36 thuật ngữ và toàn bộ bảng số liệu. Gõ không dấu vẫn được.</p>
+<input type="text" id="s-q" placeholder="Nhập từ khóa, ví dụ: van khoi, gio tuoi, ap suat…" autocomplete="off">
+<div class="chips" id="s-chips">
+<span class="chip active" data-f="all">Tất cả</span>
+<span class="chip" data-f="clause">Điều khoản</span>
+<span class="chip" data-f="term">Thuật ngữ</span>
+<span class="chip" data-f="table">Bảng số liệu</span>
+</div>
+<button class="btn" onclick="doSearch()">Tìm kiếm</button>
+</div>
+<div id="s-results"></div>
+</section>
+<script>
+"use strict";
+(function(){
+var curF="all";
+document.getElementById("s-chips").addEventListener("click",function(e){
+var c=e.target.closest(".chip");if(!c)return;curF=c.dataset.f;
+document.querySelectorAll("#s-chips .chip").forEach(function(x){x.classList.remove("active");});
+c.classList.add("active");doSearch();
+});
+function tim(rows,kw,fields,lim){
+var k=khongDau(kw);if(!k)return[];
+var out=[];
+rows.forEach(function(r){
+var hay=fields.map(function(f){return khongDau(r[f]);}).join(" ");
+var p=hay.indexOf(k);if(p>=0)out.push([p,r]);
+});
+out.sort(function(a,b){return a[0]-b[0];});
+return out.slice(0,lim||20).map(function(x){return x[1];});
+}
+window.doSearch=function(){
+var kw=document.getElementById("s-q").value.trim();
+var box=document.getElementById("s-results");box.innerHTML="";
+if(!kw){box.innerHTML='<div class="card"><p class="small">Nhập từ khóa rồi bấm Tìm kiếm.</p></div>';return;}
+var h="",n=0;
+if(curF==="all"||curF==="clause"){
+var rc=tim(DB.clauses,kw,["so","tieu_de"],15);
+if(rc.length){h+='<div class="card"><h3>📄 Điều khoản ('+rc.length+')</h3>';
+rc.forEach(function(c){h+='<div class="hit"><div class="t">'+hl("Điều "+c.so+": "+c.tieu_de,kw)+'</div><div class="d">Trang '+c.trang+'</div></div>';n++;});
+h+='</div>';}
+}
+if(curF==="all"||curF==="term"){
+var rt=tim(DB.glossary,kw,["ten_vi","ten_en","dinh_nghia"],10);
+if(rt.length){h+='<div class="card"><h3>📖 Thuật ngữ Điều 3 ('+rt.length+')</h3>';
+rt.forEach(function(t){h+='<div class="hit"><div class="t">'+hl(t.so+". "+t.ten_vi+(t.ten_en?" ("+t.ten_en+")":""),kw)+'</div><div class="d">'+hl(t.dinh_nghia,kw)+'</div></div>';n++;});
+h+='</div>';}
+}
+if(curF==="all"||curF==="table"){
+var groups=[
+["Bảng E.1 — Gió tươi","bangE1",["ten_phong"],"ten_phong","trang 70–72"],
+["Bảng F.1 — Bội số trao đổi khí","bangF1",["loai_phong_khong_gian"],"loai_phong_khong_gian","trang 73"],
+["Bảng A.1/A.2 — Thông số trong nhà","bangA",["phong"],"phong","trang 39–41"],
+["Bảng G.1 — Chênh lệch áp suất","bangG1",["doi_tuong"],"doi_tuong","trang 77"]
+];
+var aAll=DB.bangA1.hang.concat(DB.bangA2.hang);
+var found=false,hh='<div class="card"><h3>📊 Bảng số liệu</h3>';
+groups.forEach(function(g){
+var rows=g[1]==="bangA"?aAll:DB[g[1]].hang;
+var rr=tim(rows,kw,g[2],6);
+if(rr.length){found=true;
+hh+='<p><b>'+g[0]+'</b> <span class="small">('+g[4]+')</span></p>';
+rr.forEach(function(r){hh+='<div class="hit"><div class="t">'+hl(r[g[3]],kw)+'</div></div>';n++;});}
+});
+if(found){box.innerHTML=h+hh+'</div>';return;}
+}
+box.innerHTML=h||'<div class="card"><p>Không tìm thấy gì với "'+esc(kw)+'".</p></div>';
+if(n===0&&h)box.innerHTML='<div class="card"><p>Không tìm thấy gì với "'+esc(kw)+'".</p></div>';
+};
+document.getElementById("s-q").addEventListener("keydown",function(e){if(e.key==="Enter")doSearch();});
+})();
+</script>
+
+<!-- ================= TAB 5: BẢNG TRA ================= -->
+<section class="tab" id="tab-tables">
+<div id="lib"></div>
+</section>
+<script>
+"use strict";
+(function(){
+function tbl(cot,rows,fmt){
+var h='<div style="overflow-x:auto"><table class="data"><tr>'+cot.map(function(c){return "<th>"+esc(c)+"</th>";}).join("")+"</tr>";
+rows.forEach(function(r){h+="<tr>"+fmt(r).map(function(c){return "<td>"+c+"</td>";}).join("")+"</tr>";});
+return h+"</table></div>";
+}
+var L="";
+// E.1
+L+='<details class="acc" open><summary>Bảng E.1 — Tiêu chuẩn gió tươi (55 loại phòng · tr.70–72)</summary><div class="body">'
++tbl(["Loại phòng","m²/người","m³/h.người","m³/h.m²","Ghi chú"],DB.bangE1.hang,function(r){
+return [esc(r.ten_phong),esc(r.dien_tich_m2_nguoi),"<b>"+esc(r.luong_kk_m3h_nguoi)+"</b>","<b>"+esc(r.luong_kk_m3h_m2)+"</b>",esc(r.ghi_chu||"")];})
++'</div></details>';
+// F.1
+L+='<details class="acc"><summary>Bảng F.1 — Số lần trao đổi không khí (tr.73)</summary><div class="body">'
++tbl(["Loại phòng, công trình","Số lần (lần/h)","Ghi chú"],DB.bangF1.hang,function(r){
+return [esc(r.loai_phong_khong_gian),"<b>"+esc(r.so_lan_trao_doi)+"</b>",esc(r.ghi_chu||"")];})
++'</div></details>';
+// A.1 + A.2
+[["bangA1","Bảng A.1 (tr.39)"],["bangA2","Bảng A.2 (tr.40–41)"]].forEach(function(x){
+L+='<details class="acc"><summary>'+x[1]+' — Thông số tính toán trong nhà</summary><div class="body">'
++tbl(["Điều kiện","Phòng","t° tiện nghi","t° cho phép","v gió tiện nghi","v gió tối đa","Độ ẩm %"],DB[x[0]].hang,function(r){
+return [esc(r.mua),esc(r.phong),esc(r.nhiet_do_tien_nghi)+" °C",esc(r.nhiet_do_gioi_han_cho_phep)+" °C",
+esc(r.toc_do_gio_tien_nghi)+" m/s",esc(r.toc_do_gio_toi_da_cho_phep)+" m/s",esc(r.do_am_tuong_doi)+" %"];})
++'</div></details>';
+});
+// G.1, H.1
+L+='<details class="acc"><summary>Bảng G.1 — Chênh lệch áp suất chống khói (tr.77)</summary><div class="body">'
++tbl(["Loại công trình","Chiều cao trần (m)","ΔP (Pa)"],DB.bangG1.hang,function(r){
+return [esc(r.doi_tuong),esc(r.chieu_cao_tran),"<b>"+esc(r.chenh_lech_ap_suat)+"</b>"];})
++'</div></details>';
+L+='<details class="acc"><summary>Bảng H.1 — Hệ số theo chiều rộng cửa (tr.79)</summary><div class="body">'
++tbl(["Loại công trình","Chiều rộng cửa","Hệ số"],DB.bangH1.hang,function(r){
+return [esc(r.loai_cong_trinh),esc(r.chieu_rong_cua),"<b>"+esc(r.he_so)+"</b>"];})
++'</div></details>';
+// Van
+L+='<details class="acc"><summary>Phân loại van (Điều 3.32–3.34)</summary><div class="body">';
+DB.van_types.forEach(function(t){L+='<p><b>'+esc(t.loai_van)+'</b><br><span class="small">'+esc(t.dinh_nghia)+'</span></p>';});
+L+='<p class="small">Van ngăn cháy gồm 3 dạng: thường mở (đóng khi có cháy) · thường đóng (mở khi có cháy/sau cháy) · kép.</p></div></details>';
+// Dieu 7
+L+='<details class="acc"><summary>Hệ thống bảo vệ chống khói — Điều 7</summary><div class="body">';
+DB.dieu7_systems.forEach(function(x){
+L+='<div class="hit"><div class="t">'+esc(x.loai_he_thong)+' <span class="small">['+esc(x.dieu_khoan||"")+']</span></div><div class="d">'+esc(x.mo_ta_ngan)+'</div></div>';});
+L+='</div></details>';
+// Dieu 4.7
+L+='<details class="acc"><summary>Phân loại hệ thống ĐHKK — Điều 4.7.1 &amp; Hình 1 (tr.15–16)</summary><div class="body"><ul>'
++DB.dieu47.map(function(d){return "<li>"+esc(d.noi_dung)+"</li>";}).join("")+'</ul>'
++'<p class="small">Cấp TSTT ngoài trời (5.2.2): Cấp I (m=35 h/năm) — đặc biệt quan trọng · Cấp II (m=150–200 h/năm) — thông thường · Cấp III (m=350–400 h/năm) — không đòi hỏi cao.</p></div></details>';
+// Bang D
+L+='<details class="acc"><summary>Phụ lục D — Giới hạn tiếp xúc hóa chất/bụi (tr.66–69)</summary><div class="body"><ul>'
++DB.bangD.map(function(b){return "<li><b>"+esc(b.ten_bang)+"</b> — "+esc(b.tieu_de)+" <span class='small'>(tr."+esc(b.trang)+")</span></li>";}).join("")
++'</ul><p class="small">Chi tiết từng chất xem trực tiếp trong văn bản tiêu chuẩn.</p></div></details>';
+document.getElementById("lib").innerHTML=L;
+})();
+</script>
+</main>
+<footer>
+<p>⚠️ Công cụ tra cứu nhanh &amp; tham khảo cá nhân — <b>không thay thế</b> văn bản TCVN 5687:2024 chính thức. Khi thiết kế/thẩm duyệt, luôn đối chiếu văn bản gốc theo số trang ghi kèm.</p>
+<p>Dữ liệu trích từ TCVN 5687:2024 (Xuất bản lần 1, Hà Nội 2024).</p>
+</footer>
+</body>
+</html>
