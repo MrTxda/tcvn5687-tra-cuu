@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCVN 5687:2024 — Tra cứu nhanh TG-ĐHKK</title>
+<style>
+:root{
+color-scheme: light;
+--bg:#f4f6f8; --card:#ffffff; --ink:#1c2733; --muted:#66788a;
+--brand:#0b6e4f; --brand-d:#095c42; --accent:#e8f5ee;
+--line:#e2e8f0; --warn:#b45309; --radius:12px;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+background:var(--bg); color:var(--ink); font-size:15px; line-height:1.55;}
+header{background:linear-gradient(135deg,var(--brand-d),var(--brand)); color:#fff; padding:18px 16px 14px;}
+header h1{margin:0; font-size:19px;}
+header p{margin:4px 0 0; font-size:13px; opacity:.9;}
+nav.tabs{position:sticky; top:0; z-index:10; background:var(--card); display:flex; overflow-x:auto;
+border-bottom:1px solid var(--line); box-shadow:0 1px 4px rgba(0,0,0,.05);}
+nav.tabs button{flex:1 0 auto; border:0; background:none; padding:12px 14px; font-size:14px; font-weight:600;
+color:var(--muted); border-bottom:3px solid transparent; cursor:pointer; white-space:nowrap;}
+nav.tabs button.active{color:var(--brand); border-bottom-color:var(--brand);}
+main{max-width:860px; margin:0 auto; padding:14px 12px 90px;}
+.tab{display:none;} .tab.active{display:block;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+padding:14px; margin:12px 0; box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.card h3{margin:0 0 8px; font-size:16px; color:var(--brand-d);}
+.kv{display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:14px;}
+.kv:last-child{border-bottom:0;}
+.kv .k{color:var(--muted);} .kv .v{font-weight:600; text-align:right;}
+.badge{display:inline-block; font-size:12px; font-weight:700; background:var(--accent); color:var(--brand-d);
+border-radius:20px; padding:2px 10px; margin:2px 4px 2px 0;}
+.src{font-size:12px; color:var(--muted); margin-top:8px;}
+.note{background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px; font-size:13px; margin:8px 0;}
+input[type=text],input[type=number],select{width:100%; padding:11px 12px; font-size:15px;
+border:1px solid var(--line); border-radius:10px; margin:6px 0; background:#fff; color:var(--ink);}
+button.btn{background:var(--brand); color:#fff; border:0; border-radius:10px; padding:11px 18px;
+font-size:15px; font-weight:700; cursor:pointer; margin:6px 0;}
+button.btn:active{background:var(--brand-d);}
+button.ghost{background:#fff; color:var(--brand); border:1px solid var(--brand);}
+.row{display:flex; gap:8px;} .row>*{flex:1;}
+.result{background:var(--accent); border-radius:10px; padding:12px; font-size:16px; font-weight:700;
+color:var(--brand-d); margin:10px 0; text-align:center;}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;}
+.chip{border:1px solid var(--line); background:#fff; border-radius:20px; padding:6px 12px; font-size:13px; cursor:pointer;}
+.chip.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+.hit{border-bottom:1px solid var(--line); padding:10px 2px;}
+.hit .t{font-weight:700;} .hit .d{font-size:13px; color:var(--muted);}
+mark{background:#fef08a; border-radius:3px; padding:0 2px;}
+table.data{width:100%; border-collapse:collapse; font-size:13px; margin:8px 0;}
+table.data th,table.data td{border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top;}
+table.data th{background:var(--accent); color:var(--brand-d); font-size:12px;}
+details.acc{border:1px solid var(--line); border-radius:var(--radius); margin:10px 0; background:var(--card); overflow:hidden;}
+details.acc summary{padding:13px 14px; font-weight:700; cursor:pointer; background:#fff; list-style:none;}
+details.acc summary::-webkit-details-marker{display:none;}
+details.acc summary::after{content:"+"; float:right; color:var(--brand); font-size:18px;}
+details.acc[open] summary::after{content:"–";}
+details.acc .body{padding:0 14px 14px;}
+.q{font-weight:700; margin:12px 0 6px;}
+.opt{display:block; width:100%; text-align:left; background:#fff; color:#1c2733 !important;
+border:1px solid var(--line); border-radius:10px; padding:11px 12px; margin:6px 0;
+font-size:14px; font-family:inherit; cursor:pointer;}
+.opt.sel{border-color:var(--brand); background:var(--accent); color:#1c2733 !important;}
+footer{max-width:860px; margin:0 auto; padding:0 12px 40px; font-size:12px; color:var(--muted);}
+.stepbar{display:flex; gap:4px; margin:10px 0;}
+.stepbar span{flex:1; height:5px; border-radius:3px; background:var(--line);}
+.stepbar span.done{background:var(--brand);}
+.small{font-size:13px; color:var(--muted);}
+</style>
+</head>
+<body>
+<header>
+<h1>🌬️ TCVN 5687:2024 — Tra cứu nhanh</h1>
+<p>Thông gió &amp; Điều hòa không khí · Yêu cầu thiết kế · Chạy offline 100%</p>
+</header>
+<nav class="tabs" id="tabbar">
+<button data-tab="room" class="active">🏠 Theo phòng</button>
+<button data-tab="calc">🧮 Tính nhanh</button>
+<button data-tab="classify">🏷️ Phân loại</button>
+<button data-tab="search">🔍 Tìm kiếm</button>
+<button data-tab="tables">📚 Bảng tra</button>
+</nav>
+<main>
+
+<section class="tab active" id="tab-room">
+<div class="card">
+<h3>Tra cứu theo loại phòng</h3>
+<p class="small">Nhập tên phòng (gõ không dấu vẫn được, ví dụ: <i>phong hop</i>, <i>nha bep</i>, <i>phong mo</i>) — app gom toàn bộ yêu cầu áp dụng: gió tươi, bội số trao đổi khí, thông số nhiệt–ẩm.</p>
+<input type="text" id="room-q" placeholder="Nhập loại phòng…" autocomplete="off" list="room-list">
+<datalist id="room-list"></datalist>
+<button class="btn" onclick="roomSearch()">Tra cứu</button>
+</div>
+<div id="room-results"></div>
+</section>
+<script>
+const __KM={"a":"trang","b":"so","c":"tieu_de","d":"ghi_chu","e":"ten_phong","f":"dien_tich_m2_nguoi","g":"luong_kk_m3h_nguoi","h":"luong_kk_m3h_m2","i":"dinh_nghia","j":"ten_vi","k":"ten_en","l":"mua","m":"phong","n":"nhiet_do_tien_nghi","o":"nhiet_do_gioi_han_cho_phep","p":"toc_do_gio_tien_nghi","q":"toc_do_gio_toi_da_cho_phep","r":"do_am_tuong_doi","s":"don_vi","t":"loai_phong_khong_gian","u":"so_lan_trao_doi","v":"loai_he_thong","w":"mo_ta_ngan","x":"dieu_khoan","y":"loai_cong_trinh","z":"chieu_rong_cua","A":"he_so","B":"diem","C":"noi_dung","D":"cot","E":"hang","F":"ten_bang","G":"so_hang","H":"doi_tuong","I":"chieu_cao_tran","J":"chenh_lech_ap_suat","K":"loai_van","L":"cac_dang_con","M":"cap_do_kin","N":"gia_tri","O":"0,2","P":"0,4","Q":"0,6","R":"0,8","S":"1,0","T":"1,2","U":"1,4","V":"1,6","W":"1,8","X":"2,0","Y":"2,5","Z":"3,0","aa":"3,5","ab":"4,0","ac":"4,5","ad":"5,0","ae":"chu_thich","af":"glossary","ag":"van_types","ah":"clauses","ai":"hinh1","aj":"cac_tieu_chi_theo_dieu_471","ak":"dieu47","al":"bang1","am":"tieu_de_cot_gia_tri","an":"don_vi_cot_gia_tri","ao":"bangE1","ap":"bangF1","aq":"bangG1","ar":"bangH1","as":"bangA1","at":"bangA2","au":"dieu7_systems","av":"bangD"};const __X=o=>Array.isArray(o)?o.map(__X):o&&typeof o==="object"?Object.keys(o).reduce((r,k)=>(r[__KM[k]||k]=__X(o[k]),r),{}):o;const __D=[" không khí","},{\"b\":\"","ệ thống "," được ","\",\"a\":","\",\"c\":","hiết bị ","\",\"d\":\"\"},{\"","không "," nhiệt"," điều "," trong"," phòng","Phòng ","ng gió"," hoặc ","ử dụng"," lượng"," khói "," cháy ","0\"},{\"l\":\"Mù"," tính "," động "," lạnh "," công "," QCVN 06:202"];let __S="{\"af\":[{\"b\":\"3.1\",\"j\":\"Cách\",\"k\":\"Thermal insulation\",\"i\":\"Vật liệu có khả năng chống truyềns chủ yếu để làm chậm sự tăng/giảm.83.2\",\"j\":\"Cửa gió\",\"k\":\"Air diffuser\",\"i\":\"Cửa phân phối hình tròn, hình vuônghình chữ nhật, bao gồm các bộ phận chỉ nh hướng xả theo nhiều hướng và mặt phẳng khác nhau, thườngbố trí trên trần để phân phối.83.3\",\"j\":\"Cửa nắp thu khói/Cửa trời/Cửa chớp\",\"k\":\"Smoke collection opening/Sky opening/Shutter\",\"i\":\"Phương tiện (thiết bị)điều khiển tựvàkhiển từ xa, đậy các lỗ mở trên tường ngoài nhà bao che gianbảo vệ bằng hhút và xảtheo cơ chế tự nhiên. [Điều 1.4.11,2/BXD và Sửa đổi 01:20232/BXD]83.4\",\"j\":\"Cửa thu khói\",\"k\":\"Smoke collection opening\",\"i\":\"Lỗ mở kênh (ống) của hhút xả khói,đặt lưới, song chắncửa nắp hút khóicác van ngănthường đóng. [Điều 1.4.13,2/BXD và Sửa đổi 01:20232/BXD]83.5\",\"j\":\"Cửa xả\",\"k\":\"Exhaust opening\",\"i\":\"Lỗ mở để thoát ra khỏi/gianđiều hòathô.83.6\",\"j\":\"Điều hòa\",\"k\":\"Air-conditioning\",\"i\":\"Quá trình xử lý nhằm kiểm soát đồng thời độ, độ ẩm, độ sạch và phân phối đáp ứng yêu cầu của/gianđiều hòa.83.7\",\"j\":\"Điều khiển\",\"k\":\"Control\",\"i\":\"Tđểkhiển hhoặc một phần của hhoạtbình thường bằng thủ côngtự động. Nếu tự động, nó sẽ tự phản ứng với những thay đổi của áp suất, độcác đặckhác với giá trịcài đặt trước.93.8\",\"j\":\"Đường thoát nạn\",\"k\":\"Escape Exit/Escape Route\",\"i\":\"Đường di chuyển của người, dẫn trực tiếp ra ngoàidẫn vào vùng an toàn, tầng lánh nạn, gian lánh nạn, và đáp ứng các yêu cầu thoát nạn an toàn của người khi có cháy. [Điều 1.4.16,2/BXD và Sửa đổi 01:20232/BXD]93.9\",\"j\":\"Dàn ngưng\",\"k\":\"Condenser\",\"i\":\"Ttrong đó hơi môi chấthóa lỏng thông qua giải, loại bỏ.93.10\",\"j\":\"Hbảo vệ chống cháy\",\"k\":\"Fire protection system\",\"i\":\"Hbảo vệ chốnggồm: hbảo vệ chống nhiễm khói, hhọng nước chữabên, hcấp nước chữangoài nhà, các hchữatự động, hbáovà âm thanhcộng, hđèn chiếu sáng sự cố và đèn chỉ dẫn thoát nạn, thang máy chữa cháy, phương tiên cứu nạn cứu hộ, giải pháp kết cấu, giải pháp thoát nạn, giải pháp ngăn khói, ngănlan. [Điều 1.4.24,2/BXD và Sửa đổi 01:20232/BXD]93.11\",\"j\":\"Hcấp chống khói\",\"k\":\"Air supply system for smoke prevention\",\"i\":\"Hđượckhiển tựvàkhiển từ xa, có tác dụng ngăn chặn nhiễmkhi cóđối với các gian thuộc vùng an toàn, các buồng thang bộ, các giếng thang máy, các khoang đệm ngănbằng cách cấp từ ngoài vào và tạo ra áp suất dư các khu vực trên, cũng như các tác dụng ngăn chặn việc lan truyền các sản phẩmvà cấp bù lại thể tích sản phẩm đã bị đẩy ra ngoài. [Điều 1.4.25,2/BXD và Sửa đổi 01:20232/BXD]93.12\",\"j\":\"Hhút xả khói\",\"k\":\"Smoke exhaust system\",\"i\":\"Hđượckhiển tựvàkhiển từ xa, có tác dụng đẩyvà các sản phẩmqua cửa thungoài trời. [Điều 1.4.26,2/BXD và Sửa đổi 01:20232/BXD]93.13\",\"j\":\"Hxử lý\",\"k\":\"Air-handling system\",\"i\":\"Hcung cấpxử lý có kiểm soát đến các/gian cụ thể bằng mộtnhiều txử lý, ống dẫn, hộp chứa, tphân phối vàkhiển tự động.103.14\",\"j\":\"Khói\",\"k\":\"Smoke\",\"i\":\"Bụi khí hình thành bởi sản phẩmhoàn toàn của vật liệu dưới dạng lỏng và (hoặc) rắn. [Điều 1.4.32,2/BXD và Sửa đổi 01:20232/BXD]103.15\",\"j\":\"Cụm nhà\",\"k\":\"Indoor Unit\",\"i\":\"Tdùng để xử lý - ẩm, lắp đặt gian điềều hoàhòa, thường bao gồm quạt và ttrao đổi. [Điều 3.24, TCVN 13580:2022]103.16\",\"j\":\"Cụm ngoài nhà\",\"k\":\"Outdoor Unit\",\"i\":\"Tdùng để thực hiện trao đổi giữa môi chấtvới chất giải (khínước), lắp đặt ngoài gianhòa, thường gồm máy nén, quạt và ttrao đổi. [Điều 3.25, TCVN 13580:2022]103.17\",\"j\":\"Không khí/gió cấp\",\"k\":\"Supply air\",\"i\":\"Không khí ngoài trờicung cấp cho mỗibất kỳ/gian nào một hệ thống,tổngcung cấp cho tất cả các/gian một hệ thống.103.18\",\"j\":\"Không khí/gió hồi\",\"k\":\"Return air\",\"i\":\"Không khí tái tuần hoàn trở lại từ/gian cóhòatlàm lạnh.103.19\",\"j\":\"Không khí/gió thải\",\"k\":\"Exhaust air\",\"i\":\"Không khí phải là tuần hoàn,hút ra khỏi/gian và thải vào môi trường xung quanh.103.20\",\"j\":\"Không khí/gió tuần hoàn\",\"k\":\"Air, reciculated\",\"i\":\"Không khí/gian đi qua bộ phận làm sạch và quay trở lại chính/gian đósang/gian khác.113.21\",\"j\":\"Lối ra thoát nạn/Lối thoát nạn/Cửa thoát nạn\",\"k\":\"Exit access\",\"i\":\"Lốicửa dẫn tới đường thoát nạn, dẫn ra ngoài trực tiếpdẫn vào vùng an toàn, tầng lánh nạn, gian lánh nạn. [Điều 1.4.33,2/BXD] và Sửa đổi 01:20232/BXD113.22\",\"j\":\"Máyhòa lưu môi chất thay đổi VRV/VRF\",\"k\":\"Variable Refrigeration Volume/Variable Refrigeration Flow\",\"i\":\"Máyhòachỉnhsuấtbằng cách thay đổi thể tích/lưu môi chấtđi qua dàn bay hơi. [Điều 3.23, TCVN 13580:2022]113.23\",\"j\":\"Máy sản xuất nước lạnh\",\"k\":\"Water chiller\",\"i\":\"Tlàmnước (chất tải lạnh) hđiều hòa. [Điều 3.16, TCVN 13580:2022]113.24\",\"j\":\"Ống\",\"k\":\"Duct\",\"i\":\"Ống làm bằng kim loạivật liệu thích hợp khác,s để vận chuyển.113.25\",\"j\":\"Rò rỉ\",\"k\":\"Exfiltration\",\"i\":\"Không khí thoát ra ngoài qua tường, cửa ra vào, cửa sổ, vết nứt,...113.26\",\"j\":\"Tháp giải\",\"k\":\"Cooling tower\",\"i\":\"Tlàm mát nước giải từ bình ngưng tụ của chiller, máyhòa lưu môi chấtthay đổi, máyhòa tổ hợp có bình ngưng giải nước. [Điều 3.19, TCVN 13580:2022]113.27\",\"j\":\"Rò lọt\",\"k\":\"Infiltration\",\"i\":\"Không khí lọt vào bên qua vết nứt trên tường, cửa ra vào, cửa sổ,...123.28\",\"j\":\"Tbay hơi\",\"k\":\"Evaporator\",\"i\":\"Một phần của hlạnh, đó môi chất lạnhhóa hơi để làmmôi trường.123.29\",\"j\":\"Thô\",\"k\":\"Ventilation\",\"i\":\"Quá trình cung cấploại bỏ, bằng tự nhiêncơ khí cho bất kỳ/gian nào. Không khí có thể đãđiều hòakhông.123.30\",\"j\":\"Thô thoát khói\",\"k\":\"Smoke exhaust ventilation\",\"i\":\"Quá trình trao đổi khíđiều khiển, diễn ra bên nhà khi có chảy ở một những gian của nhà, có tác dụng ngăn chặn các táccó hại của các sản phẩm(gia tăng nồng độ các chất độc, gia tăng độ và thay đổi mật độ quang học của) đến con người và tài sản. [Điều 1.4.63,2/BXD và Sửa đổi 01:20232/BXD]123.31\",\"j\":\"Số lần trao đổi\",\"k\":\"Air change\",\"i\":\"Tỷ lệ giữa thể tích cấp vàohút ra khỏi một/gian bằng cách tự nhiêncơ khí và thể tích của/gian đó.123.32\",\"j\":\"Van gió\",\"k\":\"Damper\",\"i\":\"Bộ phận phân nhánh ố tại mỗi tầng từ ống gom đứng, có tác dụng đảm bảo dòng khí (khói và các sản phẩm cháy) ố quay ngược lại vào ống gom đứng để ngăn chặn nhiễmcho các tầng trên.123.33\",\"j\":\"Van khói\",\"k\":\"Smoke damper\",\"i\":\"Van ngănthường đóng, chỉ yêu cầu giới hạn chịu lửa E vàlắp đặt trên lỗ mở của các giếng hút khói các hành lang và sảnhbảo vệ chống(tiếp theo gọi là hành lang). [Điều 1.4.67,2/BXD và Sửa đổi 01:20232/BXD]123.34\",\"j\":\"Van ngăn cháy\",\"k\":\"Fire damper\",\"i\":\"Thiết bịđiều khiển tựvàkhiển từ xa dung để che chắn các kênh thôcác lỗ mở trên kết cấu bao che của nhà, có giới hạn chịu lửa theo tiêu chí EI. Van ngăngồm các loại sau: Van ngănthường mở (đóng khi có cháy); Van ngănthường đóng (mở khi có cháysau cháy); Van ngănkép (đóng khi cóvà mở sau cháy). [Điều 1.4.68,2/BXD và Sửa đổi 01:20232/BXD]133.35\",\"j\":\"Vùng an toàn\",\"k\":\"Safety zone\",\"i\":\"Vùng mà đó con ngườibảo vệ khỏi táctừ các yếu tố nguy hiểm của đámhoặc đó có các yếu tố nguy hiểm của đám cháy,các yếu tố nguy hiểm của đámvượt quá giá trị cho phép. [Điều 1.4.69,2/BXD và Sửa đổi 01:20232/BXD]133.36\",\"j\":\"Vùng khói\",\"k\":\"Smoke zone\",\"i\":\"Vùng bên mộttrìnhgiới hạnbao bọc xung quanh bằng các bộ phận ngăn khóicấu kiện kết cấu để ngăn cản sự lan truyền của lớpbốc lên do các đám cháy. [Điều 1.4.70,2/BXD và Sửa đổi 01:20232/BXD]13}],\"ag\":[{\"K\":\"Van gió (Damper)\",\"i\":\"Bộ phận phân nhánh ố tại mỗi tầng từ ống gom đứng, có tác dụng đảm bảo dòng khí (khói và các sản phẩm cháy) ố quay ngược lại vào ống gom đứng để ngăn chặn nhiễmcho các tầng trên.\",\"L\":null},{\"K\":\"Van(Smoke damper)\",\"i\":\"Van ngănthường đóng, chỉ yêu cầu giới hạn chịu lửa E vàlắp đặt trên lỗ mở của các giếng hút khói các hành lang và sảnhbảo vệ chống(tiếp theo gọi là hành lang). [Điều 1.4.67,2/BXD và Sửa đổi 01:20232/BXD]\",\"L\":null},{\"K\":\"Van ngăn(Fire damper)\",\"i\":\"Thiết bịđiều khiển tựvàkhiển từ xa dung để che chắn các kênh thôcác lỗ mở trên kết cấu bao che của nhà, có giới hạn chịu lửa theo tiêu chí EI. Van ngăngồm các loại sau: Van ngănthường mở (đóng khi có cháy); Van ngănthường đóng (mở khi có cháysau cháy); Van ngănkép (đóng khi cóvà mở sau cháy). [Điều 1.4.68,2/BXD và Sửa đổi 01:20232/BXD]\",\"L\":[\"Van ngănthường mở (đóng khi có cháy)\",\"Van ngănthường đóng (mở khi có cháysau cháy)\",\"Van ngănkép (đóng khi cóvà mở sau cháy)\"]}],\"ah\":[{\"b\":\"1\"Phạm vi áp dụng72\"Tài liệu viện dẫn73\"Thuật ngữ và định nghĩa84\"Quy định chung135\"Cáckiệntoán166\"Thiết kế hthô -hòa177\"Bảo vệ chốngkhi có cháy268\"Cấp lạnh319\"S nguồn thải3210\"Kiểm soát quản lý năng3411\"Cấp thoát nước3512\"Cấp điện và tựhóa361.1\"Tiêu chuẩn này quy định các yêu cầu khi thiết kế và lắp đặt các hthô -hòa (TG-ĐHKK) cho nhà ở vàtrìnhcộng khi xây dựng mớicải tạo.71.2\"Các/giantrìnhnghiệp s làm văn, chỗ nghỉ ngơi cho cán bộ/người laocó yêu cầu về TG -ĐHKK để đảm bả okiện tiện nghi và yêu cầu vệ sinh có thể áp dụng tiêu chuẩn này.71.3\"Các/gian của nhà sản xuấttrìnhnghiệp có s quy trìnhnghệ/quy trình sản xuất thì áp dụng hướng dẫn của nhà sản xuất theo thiết bị/quy trìn h của t ừng trường hợp cụ thể.71.4\"Tiêu chuẩn này áp dụng cho các loạitrình và hsau đây:73.1\"Cách (Thermal insulation)83.2\"Cửa gió (Air diffuser)83.3\"Cửa nắp thu khói/Cửa trời/Cửa chớp (Smoke collection opening/Sky opening/Shutter)8,\"d\":\"Trên dòng số hiệu nguồn có ghi '(Grill)'; tên thuật ngữ lấy từ dòng tiếp theo.\"3.4\"Cửa thu(Smoke collection opening)83.5\"Cửa xả (Exhaust opening)83.6\"Điều hòa (Air-conditioning)83.7\"Điều khiển (Control)93.8\"Đường thoát nạn (Escape Exit/Escape Route)93.9\"Dàn ngưng (Condenser)93.10\"Hbảo vệ chống(Fire protection system)93.11\"Hcấp chống(Air supply system for smoke prevention)93.12\"Hhút xả(Smoke exhaust system)93.13\"Hxử lý (Air-handling system)103.14\"Khói (Smoke)103.15\"Cụm nhà (Indoor Unit)103.16\"Cụm ngoài nhà (Outdoor Unit)103.17\"Không khí/gió cấp (Supply air)103.18\"Không khí/gió hồi (Return air)103.19\"Không khí/gió thải (Exhaust air)10,\"d\":\"Trên dòng số hiệu nguồn có ghi '(Air, ambient) (Outdoor air)'; tên thuật ngữ lấy từ dòng tiếp theo.\"3.20\"Không khí/gió tuần hoàn (Air, reciculated)113.21\"Lối ra thoát nạn/Lối thoát nạn/Cửa thoát nạn (Exit access)113.22\"Máyhòa k hông khí lưu môi chất thay đổi (Variable Refrigeration Volume/Variable Refrigeration Flow -VRV/VRF)113.23\"Máy sản xuất nước(Water chiller)113.24\"Ống (Duct)113.25\"Rò rỉ (Exfiltration)113.26\"Tháp giải (Cooling tower)113.27\"Rò lọt (Infiltration)123.28\"Tbay hơi (Evaporator)123.29\"Thô (Ventilation)123.30\"Thô thoát(Smoke exhaust ventilation)123.31\"Số lần trao đổi (Air change)123.32\"Van gió (Damper)123.33\"Van(Smoke damper)123.34\"Van ngăn(Fire damper)133.35\"Vùng an toàn (Safety zone)133.36\"Vùng(Smoke zone)134.1\"HTG-ĐHKK phảith iết kế để đảm bảokiện tiện nghi và yêu cầu vệ sinh cho người và mọi hoạtdự kiến, đảm bảo s năng tiết kiệm và hiệu quả.134.2\"Khi thiết kế TG-ĐHKK cần áp dụng các giải pháp kỹ thuật, kể cả các giải pháp vềnghệ và kiến trúc, nhằm bảo đảm:134.3\"TTG-ĐHKK, các loại đường ống lắp đặt các có môi trường ăn mòndùng để vận chuyển môi chất cóăn mòn phảichế tạo từ vật liệu chống ăn mòn hoặcphủ bề mặt bằng lớp sơn chống rỉ.144.4\"Phải có lớp cách trên các bề mặt nóng của tTG -ĐHKK để đề khả năng gâycác loại khí, hơi, sol khí, bụi c ó thể có với yêu cầu độ mặt ngoài của lớp các h phải thấp hơn 20% độ bốccủa các loại khí, hơi... nêu trên.144.5\"Cấu tạo lớp cách đường ống dẫnvà dẫn nước nóng/lạnh phảithiết kế và lắp đặt phù hợp tiêu chuẩn lựa chọn áp dụng.144.6\"Các tTG-ĐHKK phi tiêu chuẩn, đường ống dẫn và vật liệu cách phảichế tạo từ những vật liệuphép dùng xây dựng.144.7\"Phân loại các hTG-ĐHKK144.7.1\"Hđiều hòa phân loại theo các đặc điểm:144.7.2\"Các loại hđiều hòa thông dụng cho nhà ở vàtrìnhcộng đ ược phân loại Hình 1.145.1\"Thông sốtoán (TSTT) của165.1.1\"Khi thiết kếhòa (ĐHKK) nhằm đảm bảokiện tiện nghi cho cơ thể con người, TSTT của lấy theo Phụ lục A.165.1.2\"Đối với thô tự nhiên và cơ khí, về mùa hè độ tín h toán của bên khôngvượt quá 3 oC so với độ cao nhất trung bìn h ngoài trời của tháng nóng nhất năm.165.1.3\"Trường hợp thô tự nhiêncơ khí nếu đảm bảođiều kiện tiện nghi theo Phụ lục A thì để bù vào độ gia tăng độ của môi trường cần tăng vận tốc chuyểncủa để giữchỉ tiêu cảm giác phạm vi cho phép, ứng với mỗi 1 oC tăng độ cần tăng thêm vận tốc gió từ 0,5 m/s đến 0,8 m/s, nhưng nên vượt quá 1,5 m/s.165.2\"Thông sốtoán (TSTT) của ngoài trời165.2.1\"TSTT của ngoài trời (sau đây gọi tắt là TSTT bên ngoài) dùng để thiết kế thô tự nhiên và thô cơ khí là độ cao nhất trung bình của tháng nóng nhất về mù a hè hoặc độ thấp nhất trung bình của thángnhất về mùa đông năm [2].165.2.2\"TSTT bên ngoài dùng để thiết kế Đ HKK cầnc họn theo số giờ m,theo đơn vị giờ trên năm, cho phép đảm bảo chế độ ẩm bên nhàtheo hệ số bảo đảm Kbđ.165.2.3\"Trường hợp đặc biệt khi có luận chứng, có thể chọn TSTT bên ngo ài dùng để thiết kế ĐHKK theo số giờ cho phép đảm bảo chế độ ẩm bê n nhà (m) bất kỳ, nhưng khôngthấp hơn cấp III nêu trên.166.1\"Chỉ dẫn chung176.1.1\"Cần tận dụng thô tự nhiên, thô xuyên về mùa hè và có biện pháp tránh gió lùa về mùa đông nhà ở vàtrìnhcộng.176.1.2\"Đối vớitrình cao tầng (cócó hĐHKK) cần ưu tiên thiết kế ống đứng thoát khí cho bếp và khu vệ sinh riêng biệt với thô cơ khí (quạt hút).176.1.3\"Thô cơ khí cầnáp dụng khi:176.1.4\"Quạt trần và quạt câyáp dụng bổ sung cho hthô thổi vào nhằm tăng vận tốc chuyểncủa về mùa nóng tại các vị trí cần thiết.176.2\"Lưu ngoài (gió tươi) theo yêu cầu vệ sinh, lưu thổi vào nói chung và tuần hoàn (gió hồi)17,\"d\":\"Mục lục đặt tiêu đề riêng cho 6.2; thân văn bản, 6.2 mở đầu trực tiếp bằng câu quy định.\"6.2.1\"Lưu ngoài theo yêu cầu vệ sinh cho các phòn g có ĐHKK tiện nghi phảitính toán để pha loãngcác chất độc hại và mùi tỏa ra từ cơ thể con người khi hoạtvà từ đồ vật, trang ttrong p hòng.176.2.2\"Đối với các có thô cơ khí (s ĐHKK) lưu ngoài cầntoán để bảo đảm nồng độ cho phép của các chất độc hại, có kể đến yêu cầu bù vào hút thải ra ngoài của các hhút cục bộ nhằm mục đích tạo chênh lệch áp suất theo hướng có lợi.186.2.3\"Lưu thổi vào (gió n goàihỗn hợp gió ngoài và gió tuần hoàn - gió hòa trộn) phảixác địn h bằngtoán tham khảo Phụ lục G và chọn trị số lớn nhất để bảo đảm yêu cầu vệ sinh và yêu cầu an toànnổ.186.2.4\"Khôngphép lấy tuần hoàn (gió hồi) các trường hợp sau đây:186.2.5\"Miệng lấy gió hồi phảibố trí vùng làm việcvùng phục vụ.186.3\"Tổ chức thô - trao đổi186.3.1\"Phân phối th ổi vào và hút thải ra ngoài p hảithực hiện phù hợp vớinăng s ngày, năm, đồng thời có kể đếnchất thay đổi của các nguồn tỏa, tỏa ẩm và các chất độc hại.186.3.2\"Thô thổi vào phảithực hiện trực tiếp đối với các thường xuyên có người s.186.3.3\"Lượng thổi vào cho hành langcác phụ liền kề của chính khôngvượt quá 50% thổi vào chính.186.3.4\"Khôngthổi vào từ vùng ô nhiễm nhiều đến vùng ô nhiễm ít và làm ảnh hưởng đến chế độ làm việc của các miệng hút cục bộ.186.4\"Vị trí đặt cửa lấy ngoài (gió tươi)186.4.1\"Mép dưới của cửa lấy ngoài cho hthô cơ khíhệ th ống ĐHKK phải nằm ở độ cao ≥ 2 m kể từ mặ t đất.186.4.2\"Cửa lấy ngoài phảilắp lưới chắn rác, chắn côn trùng,vật nhỏ cũng như tấm chắn chống mưa hắt.186.4.3\"Cửatháp lấy ngoài có thểđặt trên tường ngoài, trên mái nhàngoài sân vườn và phải có khoảng cách nhỏ hơ n 5 m đố i với cửa thải gió của nh à lân cận, của nhà bếp, vệ sinh, gara ô tô, tháp làm mát, máy…186.5\"Không khí thải (gió thải)196.5.1\"Đối với cácĐHKK phải có hthải ô nhiễm ra ngoài khi cần thiết để nâng cao chất môi trường.196.5.2\"Cửamiệng ống thải khí phải đặt cách xa cửa lấy ngoài nhỏ hơn 5 m.196.5.3\"Thải từ ra ngoài bằng hệ t hống TG hút ra phảithực hiện từ vùng bị ô nhiễm nhiều nhất cũng như vùng có độentanpy cao nhất.196.5.4\"Miệng hút đặt trên cao của hTG hút chung để thải khí ra ngoài cầnbố trí như sau:196.5.5\"Miệng hút đặt dưới thấp của hthô hút chung cầnbố trí với khoảng cách nhỏ hơn 0,3 mtừ sàn đến mép dưới của miệng hút.196.6\"Lọc sạch bụi196.6.1\"Không khí ngoài và tuần hoàn cácĐHKK phảilọc sạch bụi.196.6.2\"Phải lọc bụi thổi vào của các hTG cơ khí và ĐHKK để đảm bảo nồng độ bụi sau khi lọc vượt quá:196.6.3\"Phin lọc phảilắp đặt sao cho ch ưalọc chảy vòng qua (bypass) phin lọc.196.6.4\"Phải có khả năng tiếp cận bộ phận lọc kh ông khí vào bất cứ thời điểm nào cần t hiết để kiểm tra tình trạng của bộ lọc và sức cản của nó đối với dòng đi qua.196.7\"Rèm (còn gọi là màn gió)206.7.1\"Màn gióáp dụng tại vị trí cửa ra vào củatrìnhcộng có ĐHKK và cần lựa chọn một các phương án sau đây khi số người ra vào thường xuyên trên 300 lượt/h;206.7.2\"Nhiệt độ cấp cho màn gió chốngtại cửa ra vào khôngvượt quá 50 0C và vận tốc khôngvượt quá 8 m/s.206.8\"Thô sự cố206.8.1\"Thiết kế và vận hành hthô sự cố phải tuân theo các quy định [6]..206.8.2\"Tcủa hthô sự cố cầnbố trí tại những/gian có nguy cơ phát sinh một lớn chất khí độc hạicháy nổ theo đúng với yêu cầu của phầnnghệ thiết kế, có kể đến sự đồng thời của sự cố có thể xảy ra đối với tcông nghệ và tthô.206.8.3\"Lưu của hthô sự cố đối với bụi, các chất độc hại phảixác định theo yêu cầunghệ.206.8.4\"Nếuchất của môi trường (nhiệt độ, loại hợp chất hơi, khí, bụi dễnổ) cần thô sự cố vượt quá giới hạn cho phép của loại quạt chốngnổ thì phải cấu tạo hthô sự cố bằng quạt phun ê-jec-tơ.206.8.5\"Để thực hiện thô sự cố cho phép s:206.8.6\"Không cần phải bù vào bằng hthổi vào khi thực hiện thô sự cố cho bụi và khí độc hai nếu có yêu cầu khác củanghệ.206.8.7\"Hthô cho các khu vực phải bảo vệ chống nhiễm k hói khi cótheo quy định về an toàncho nhà vàtrình [6] phải đảm bảo các yêu cầu sau:206.9\"TTG-ĐHKK và quy cách lắp đặt216.9.1\"Quạt thô, máyhòa, buồng cấp gió, buồng xử lý, tsấy nóng kh í, ttái s dư, ph in lọc bụi các loại, vanchỉnh lưu, bộ tiêu âm... (sau đây gọi chung là thiết bị) cần phảitính toán lụa chọn theo nhu cầu s vàđến tổn thất lưu qua các khe hở của t(theo chỉ dẫn của nhà sản xuất), còn trường hợp ống dẫn (ốn g gió) thì the o các chỉ dẫn nêu 6.11.9 (trừ các đoạn ố bố trí ngay các phò ng mà hnày p hục vụ).216.9.2\"Khi quạt đấu nối với đường ống dẫn gió t hì miệng hút và miệng thổi của nó phải lắp lưới bảo vệ.216.9.3\"Thồi và tiêu âm phảilàm bằng vật liệu k hông cháy; riêng bề mặt bên của thồi có thểlàm bằng vật liệu khó cháy.216.9.4\"Các tthô khôngbố trí gian/phòng mà tcó nhiệm vụ phục vụ, trừ trường hợp tcó lưu lượ dưới 10 000 m3/h và cấp gió cho màn gió hay màn gió sử dụ tuần hoàn.216.9.5\"Tthuộc hTG cấp và h ệ ĐHKK khôn gbố trí các/gian khôngphép lấy tuần hoàn.216.9.6\"Tcủa các hTG cho các thuộc cấp A và B c ũng như thhút thải cục bộ hỗn hợp khí nổ khôngbố trí tầng hầm.216.9.7\"Phin lọc bụi sơ cấp trên tuyến cấp gió phảibố trí trước dànkhử ẩm; bộ lọc bổ sung (thứ cấp) bố trí trước điểm cấp gió vào.216.9.8\"TTG làm nhiệm vụ hút thải khí có mùi khó chịu (thí dụ: các hệ hút thải từ khu vệ sinh, từ hút thuốc v.v...) khôngbố trí cùng gian máy thô làm chức năng cấp gió cho các gian khác.216.9.9\"TTG hút thải khí tái s bằng các tthô thu hồi theo sơ đồ khí - khí, cũng như ttuần hoàn phảibố trí theo các yêu cầu nêu 6.9.8.216.10\"Gian máy thô -hòa (TG-ĐHKK)226.10.1\"Gian máy bố trí tTG của hcấp gió thổi vào cầnthiết kế theo:226.10.2\"Gian máy đặt tTG cầnbố trí phạm vi của vùngdo hnày phục vụ.226.10.3\"đặt bộ lọc khô chuyê n lọc hỗn hợp nguy hiểm nổ khôngbố trí bên dưới các gian tập trung đông người.226.10.4\"Chiều cao gian máy bố trí tTG cần phải cao hơn chiều cao tít nhất 0,8 m và phảiđếnkiện thao tác của tnâng cẩu bên gian máy nếu có, song khôngnhỏ hơn 1,8 m kể từ sàn nhà đến cốt thấp nhất của kết cấu máisàn tầng trên.226.10.5\"Trong gian má y đặt thh út thải, cần tổ chức thô hút với bội số trao đổi khí dưới 1 lần/h.226.10.6\"Trong gian máy đặt tcủa hcấp gió (trừ hcấp gió tạo áp ng ăn khói) cần phải tổ chức thô thổi vào với bội số trao đổi nhỏ hơn 2 lần/h, có thể dùng ngay hcấp gió nàybố trí hcấp gió riêng.226.10.7\"Khôngbố trí tuyến ống dẫn chất lỏng h ay chất khí dễ cháy, dẫn khí đốt đi qua khô ng gian đặt tTG.226.10.8\"Cần dự kiến tnâng cẩu riêng dùng cho mục đích sửa chữa tTG (quạt,cơ...) nếu trọng của một đơn vị cấu kiện hay một phần cấu kiện vượt quá 50 kg khi cókiện s tnâng cẩu của dây chuyềnnghệ.226.11\"Đường ống dẫn (đường ố)226.11.1\"Trên đường ố của hTG chung, hđường ống ĐHKK... cần lắp đặt các bộ phận sau đây với mục đích ngăn cản sản phẩm(khói) lan tỏa vào khi có hỏa hoạn:226.11.2\"Cần đặt van một chiều trên đường ố để tránh hiện tượng tràn khí độc hại thuộc nhóm 1 và 2 từ này qua khác (khi hthô hoạt động) tr ường hợp các bố trí trên các tầng khác nhau và nếu lưu lượ ngoài cấp vào cáctín h toán theokiện hòa loãng độc hại.236.11.3\"Đường ố phảithiết kế và lắp đặt theo quy định TCVN 13580 và TCVN 13581.236.11.4\"Đường ố bằng vật liệu cháy phảis cho:236.11.5\"Đường ố bằng vật l iệu khó cháyphép strình một tầng thuộc hạng nguy hiểmE, trừ những hệ thốn g ghi 6.11.4 a), cũng như các gian tập trung đông người.246.11.6\"Đường ố bằng vật liệu cháyphép s phạm vi củagian mà hnày phục vụ, trừ những trường hợp quy định 6.11.4.246.11.7\"Đường ố cần đường bả o vệ chống han rỉ phù hợp với yêu cầu TCVN 13580 và TCVN 13581.246.11.8\"Quy định độ kín của đường ố:246.11.9\"Đường ố đi ngang qua và ống góp của hTGphép cấu tạo:256.11.10\"Không quy định giới hạn chịu lửa của ố  và ống góp đặt gian máy t TGđặt bên ngoài nhà, trừ ố hay ống góp đi ngang qua máy tTG.256.11.11\"Ố đi ngang qua các gian đệm của các thuộc các hạng nguy hiểmA và B, cũng n hư các hhút cục bộ hút thải hỗn hợp khí gây nổ phảicấu tạo với giới hạn chịu lửa 0,5 h.256.11.12\"Các đường ống của hhút khói, hc ấp chốngvà các van ngăn cháy các hnày có giới hạn chịu lửa theo quy định [6].256.11.13\"Khôngđặt ố đi ngang qua khung cầu thang (trừ trường hợp hcấp gió tăng áp ngăn khói) và qua các gian hầm trú ẩn.256.11.14\"Lỗ chừa cho ố xuyên qua tường, vách hay sàn côn g trình (kể cả vách giếng và vỏ bao che hộp ống) ph ảichèn b ằng vật l iệu cháy và đảm bảo đủ g iới hạn chịu lửa của tường ngăn mà ống đi xuyên qua.256.11.15\"Đường ố, đó tải hỗn hợp khí nguy hiểm gây nổ, cho phép cắt ngang bởi ống mang nếu ống này có độ tối đa (tính bằ ng oC) thấp hơn từ 20 % trở lên so với độ bốccủa hỗn hợp khí, bụisol khí mà ố vận chuyển.256.11.16\"Ố của hhút cục bộ dẫn hỗn hợp khí nguy hiểm gây nổ, phần có áp suất dương, cũng như đoạn ố  dẫn khí độc hại loại 1 và loại 2 khôngđặt xuyên qua các gian khác.256.11.17\"Khôngphép lắp đặt ống dẫn ga và các loại ống dẫn chất cháy, cáp điện, ống thoát nước thải, bên ố h ay cách bề mặt ống 50 mm ; khôngph ép để các hệ kỹ thuật kể trên cắt ngang qua ố.266.11.18\"Đường ố thuộc hhút chung, hhút cục bộ hút thải các hỗn hợp khí d ễnổ nhẹ hơn cầncấu tạo có độ dốc nhỏ hơn 0,5 % dốc lên theo chiều của dòng khí chuyển động.266.11.19\"Đường ố, mà đó có thể có hiện tượng lắng đọng hay ngưng tụ hơi ẩmbất kể chất lỏng loại nào, phảicấu tạo với độ dốc nhỏ hơn 0,5 % dốc xuôi theo chiều đi của dòng khí, đồng thời cấu tạo ống xả dịch ngưng tụ.266.11.20\"Chênh lệch cân bằng tổn thất áp suất trên các nhánh ố khôngvượt quá 10 %.266.11.21\"Các mối nối mềm ở cu ối ố nối tới các tđầu cuối, các miệng hút và cấp khôngdài quá 2 m.266.11.22\"Các mối nối mềm,s để ngăn chặn và/hoặc cho phép chuyển vị do hđường ống, có chiều dài quá 250 mm.267.1\"Việc bảo vệ chốngkhi cónhằm ng ăn chặn và/hoặc hạn chế sự lan truyềnvà các sản phẩm(sau đây gọi chung là khói) nhà, với mục đích:267.2\"Các khu vực phải bảo vệ chốngtheo quy định về an toàncho nhà vàtrình [6].267.3\"Lưu khói,bằng kg/h,hút thải từ hành lang hay sảnh cầnxác định theotoán phù hợp quy định [6], nhận trọng riêng củabằng 6 N/m3, độ300 oC và nhập vào qua cửa đi thông ra khung cầu thang hay thông ra ngoài trời.267.4\"Cần có hhút thải cơ khí riêng biệt với cách xác địnhnhư sau:267.5\"Cửa hút(miệng hút) cần phải bố trí trên giếng thải khói, dưới trần hành lang hay trần sảnh.277.6\"Lưuthải trực tiếp từ/gian cầnxác định theotoán phù hợp với:277.7\"Không gian có diện tích lớn hơn 1 600 m2 cầnchia ra nhiều vùng thoátđểđến khả năng đámcó thể chỉ xảy ra một khu vực nhất định.277.8\"Thời gianngập tràn gian hay ngập tràn bể chứaX,bằng giây (s), cầnxác định theothức sau:277.9\"Tốc độ chuyểncủa khói,bằng m/s, van, đường ống, giếng th oátcầnnhận theotoán.287.10\"Nên sử d ụng hệ t hống hút thải tự nhiên để thảitrực tiếp từ các gian nhà một tầng qua các giếng thảicó van khóiqua các cửa trời thô bị tạt gió (đón gió).287.11\"Hhútcầntrang bị287.12\"Quạt thảicầnche chắn bằng vách ngănloại 1.297.13\"S biện pháp hút thải cơ khí từ vùng dưới của phò ng để thải khói, khí, sản phẩm cháy... sau vụtừ nhữngtrang bị hchữabằng khí.297.14\"Để thảikhivà khí c ủa sản phẩmsau vụ cháy, cho phép s hTG sự cố và TG chung nếu thỏa mãn các yêu cầu nêu 7.3 đến 7.13.297.15\"Việc cấp gió ngoài vào khu vực bảo vệ chống(khu vực thoát nạn) để tạo áp suất dương kh í cócầnthực hiện ở các vị trí sau:297.16\"Lưu lượ ngoài cấp vào khu vực thoát nạn cho mục đích bảo vệ chốngphảitính toán để đảm bảo áp suất dư từ 20 Pa đến 50 Pa các khu vực sau:307.17\"Số điểm phân phối gió để tạo áp suất dương khung c ầu thang phải đủ để đảm bảo trường áp suất đồng đều.307.18\"Khitoán bảo vệ chốngcần:307.19\"Để bảo vệ chốngcần thực hiện các quy định sau:318.1\"Hcấpthường phải gồm hai hay nhiều tổ máyhệ máy lạnh; cũng có thể cấu tạo một máyhay một hlàmvới khả năngchỉnhnăng suất.318.2\"Tổn thấttrên tvà trên đường ống của hcấpcầnxác định bằngtoán (tính bảo ôn), song khôngvượt quá 10 % năng suấtcủa hlạnh.318.3\"Cụm nhà (Indoor Unit ) của máyhòa cục bộ, đa cụm và máyhòa lưu môi chấtthay đổi (Vari able Refrige ration Volume/Variable Ref rigeration Flow -VRV/VRF)phép s:318.4\"Đểhòasuất, nhằm nâng cao hệ số đầy tải và tận dụng điện nă ng giờ thấp điểm, hcấpcầnthiết kế với bể trữ lạnh.328.5\"Hmáykiểu máy nén có chứa dầu (bôi trơn) lớn hơn 250 kg t rong bất kỳ một máy nào đều khôngphép bố trí bên nhàcộ ng và nh à hành chính dịch vụ, nếu bê n trên trần hay bên dưới sàn của máynày có gian là nơi thường xu yên hay tạm thời tập hợp đông người.328.6\"Gian máy bố trí máyBr -Li và máyê -jec-tơ hơi nướcmá ycó chế độ bơm phảixếp vào cấp nguy hiểmnổ E, còn máydùng amoniac - thuộc về cấp B.328.7\"Miệng xả môi chấttừ van an toàn phảiđưa vượt trên cửa sổ, cửa đi và các cửa lấy gió dưới 2 m, và dưới 5 m cách mặt đất.328.8\"Gian máy đặt máyphảitổ chức thô chung để khử t hừa bằng hhút cơ khíthiết kế đủ khả năng:329.1\"Các hTG-ĐHKK nên thiết kế với khả năng tận dụng nguồn năng thải:329.2\"Cầnđến độ ổn định của nguồn thải cũng như c ủa nhu cầu s nguồn này hkỹ thuật khi lựa chọn sơ đồ s nh iệt (lạnh), chọn ts và bơm...339.3\"Nồng độ các chất độc hại khi s thải khôngvượt quá giá trị giới hạn tiếp xúc cho phép của 50 yếu tố hóa học tại nơi làm việc [3].339.4\"Trong các tthô thu hồi theo sơ đồ - và khí -, tại những điểm đấu nối đường ống cần phải đảm bảo sao cho áp suất c ủa cấp vàotrình cao hơn áp suất của khí ha y thải ra.339.5\"Tthô thu hồi theo sơ đồ -khí (cũng như các tthô thu hồi trên nguyên tắc ống) khôngs vào mục đích làm nóng (làm lạnh) cấp vào nhà, nếu tận dụng năng của:339.6\"Trong các tthô thu hồi có thểphé p s thải của các chất khí, dung dịch độc hại, hay nguy hiểm, để làm nóng (làm lạnh) cấp vào nhà với vai trò chất mang trung gian bên tuyến ống hay giàn trao đổi kín, một khi có thỏa thuận của các cơ quan giám sát; nếu có thỏa thuận này t hì cần s sơ đồ vòng tuần hoàn bổ sung với chất mang chứa chất độc hại loại 1, loại 2 và loại 3; cũng phải dùng sơ đồ này khi nồng độ chất độc hại nêu trên đây có khả năng vượt nồng độ cho phép trường hợp xả sự cố vào nhà.339.7\"Khi s từ hTG có chứa bụi hay s ol khí lắng đọng, cần tổ chức l ọc để đạtnồng độ bụi cho phép theo tiêu chuẩn kỹ thuật đối với tthô thu hồi, đồng thời cũng phải có biện pháp làm vệ sinh thường kỳ bề mặt trao đổi.339.8\"Trong các hs năng thứ cấp cầnđến những biện pháp ngăn ngừa đóng băng của chất tải th ứ cấploại trừ hiện tư ợng tạo băng trên bề mặt của ttái sử d ụng.339.9\"Có thể s hcấp (lạnh) dự đi kèm với hthô thu hồi.3410.1\"Thiết kế của hđiều khiển phải cho ph ép hoạts năng hiệu quả mà vẫn duy trì cáckiện nhà mong muốn.3410.2\"Khi hđiều hòa phục vụ các khu vực có yêu cầu làm mát khác nhau t hì phải phân chia đủ các vùng có các chế độ làm mát khác nhau3410.3\"Phải có ít nhất một bộchỉnh độ có dải hoạtphù hợp cho mỗi hvà vùng xử lý riêng cho việcchỉnh độ cho các khu vực.3410.4\"Có giải pháp để hạn chế một phần hay tắt toàn bộ việc làm mát cho từng vùng bằng thủhay tự động.3410.5\"Hđiều hòa phảitrang bị ít nhất một những tsau để có thể tắt tự động:3410.6\"Các hsau yêu cầu tắt tựquy định 10.5:3410.7\"Bộ xử lý với lưu từ 5 m 3/s trở lên nên cókhiển khởitối ưu.3410.8\"Các vùng dự định hoạt độngcó người khô ng đồng thời nênnhóm lại thành các khu vực cách ly, với mỗi khu vực cách ly quá 2 300 m2 diện tích sàntầng vớikiện:3410.9\"Những điểm sau đây yêu cầu đối tcách ly vàkhiển quy định tai 10.8 (b):3510.10\"Các vans tất cả các hcấp và t hoát thải phục vụ các gian cóhòa phải tựtắt khi các gian khôngs.3510.11\"Các van có lượ rò rỉ tối đa là 100 l/s/m2 trên toàn bộ diện tích của van ở 250 Pa.3510.12\"Quạt (đối vớicơ lớn hơn 0,5 kW)s hphải có bộkhiển tự(phù hợp với 10.5) để tắt khi s.3510.13\"Các h( với thiết kế lượ ngoài lớn hơn 1,4 m 2/s phục vụ các khu vực có mật độ người trung bình quá 1 người/ m2) phải có cá c phương tiệ n tựgiảm lượ n goài trời xuống dưới mức thiết kế, khi gian chỉ một phần có người.3511.1\"Nước cấp cho tháp giải, buồng phun, giàn phun ẩm, phun ẩm bổ sung cùng các txử lý khác phải là nước có chất theo tiêu chuẩn nước ăn uống.3511.2\"Nước tuần hoàn buồng phun, cũ ng như các tkhác thuộ c hTG -ĐHKK phảilọc sạch.3511.3\"Cần phải cấu tạo đường ống xả nước vào hthoát nước để xả nước từ txử lý và để thoát nước ngưng.3511.4\"Chất nước (độ cứng, độ pH, h àm cặn...) dùng vào m ục đích làm nguội tlạnh cầnđảm bảo theokiện kỹ thuật cho máy lạnh.3511.5\"Nhiệt độ nước làm mát tháp giải, bình ngưng của máy sản xuất nướcvà các máyhòa tổ hợp gọn vượt quá 33 oC.3512.1\"Nguồn điện cấp cho các hTG-ĐHKK phảixếp loại ngang cấp với hcấp điện cho mạngnghệ và mạng kỹ thuật củatrình.3612.2\"Trong các nhà vàtrình có hbảo vệ thải khói, nên trang bị htín hiệu báotự động.3612.3\"Đối với cáctrình và các nhà có trang bị hchữatựhay htín hiệu báotự động, thì nhất thiết phải thiết kế hệ khóa liên(trừ nguồn cấp điện cho tđấu nối vào mạng chiếu sáng một pha) cho các hTG-ĐHKK cũng như các hbảo vệ chốngvới các hnày nhằm mục đích:3612.4\"Những có htín hiệu báotự độn g phảitrang bị hệkhiển ngắt mạch từ xa vàbố trí bên ngoài các do hnày phục vụ.3612.5\"Thiết bị, đường ống bằng kim loại và ố của hTG-ĐHKK và các hhút cục bộ thải hỗn hợp nguy hiểm nổ, phảinối đất theo quy định.3612.6\"Các thông số của chất tải (lạnh) v à của phảikhống chế tron g các hsau:3612.7\"Dụng cụ kiểm tra đo đạc từ xa cầns để đo các thông số chủ yếu; các thông số còn lại nên đo đạc bằng các dụng cụ đo lường tại chỗ (dụng cụ lắp tại chỗ hay dụng cụ cầm tay).3712.8\"Việc đo đạc, kiểm tra vàkhiển từ xa các thông số chính hTG-ĐHKK phảithực hiện theo yêu cầunghệ.3712.9\"Hệkhiển tựcác thông số cần phải thực hiện đối với:3712.10\"Đầu đo thông số môi trư ờng nên đặt tạ i những điểm mangđặc trưng của p hòng hay của vùng làm việc, ở nơi mà đầu đo chịu ảnh hưởng của những bề mặt nóng hay lạnhcác dòng khí lưu thông.3712.11\"Hệ khóa liêntựcần bố trí để:3712.12\"Hệ khóa liêntựcủa quạt gió thuộc các hTG hút thải cục bộ v à hút thải chung, nếu lắp quạt dự, đấu nối với tcông nghệ phải đảm bảo d ừng tkhi quạt bị sự cố ngừng hoạt động, còn nếu dừngtcông nghệ thì phải phát tín hiệu báo động.3812.13\"Đối với các hcó l ưu hòa trộn gió ngoài và gió tuần hoàn biến đổi cần lắp khóa liênnhằm đảm bảo luôn luôn có lưu lượ ngoài tối thiểu.3812.14\"Đối với hTG hút có lọc bụi qua các bộ lọc ướt cần bố trí hệ liêngiữa quạt với hcấp nước cho bộ lọc ướt để đảm bảo:3812.15\"Việc khởimàn gió phải liênvới khâu đóng mở cổng, cửa ra vàolỗ cửa của dây chuyềnnghệ.3812.16\"Khâu quản lý các hTG-ĐHKK cáctrìnhnghiệp, dân dụng, nhà ở và nhà hành chính - sinh hoạt phảitổ chức đồng thời v ới khâu quản lý toàn nhà, đó c ó hquản lý các quá trìnhnghệ hay tkỹ thuật.3812.17\"Độ chính xác duy trì đ iều kiện vi khí hậu bêntr ình có ĐHKK (khi có những yêu cầu đặc biệt) nên đảm bảo yêu cầu như sau:38G.1\"Lưu cấp vào L, m 3/h cho hTG và ĐHKK phảixác định trên cơ sởtoán và chọn giá trị lưu lớn nhất để đảm bảo:74G.2\"Lưu phảixác định riêng biệt chokiện mùa nóng và mùakhi lấy đại lớn nhấttheo cácthức D.1 đến D.7 với trọng riêng của nhận bằng 1,2 kg/m3:74G.3\"Lưu cần để bảo đảm độ an toàn c háy nổxác định theoth ức (D.2) nhưng phải thay giá trị Ch,cb và CR bằng giá trị 0,1 CE, mg/m3 (CE là giới hạn nồng độ dưới gâynổ của hỗn hợp hơi, khí và bụi với).76G.4\"Lưu Lck của hTG làm việc theo chu kỳ cósuất quạt là Lq (m3/h)xác định từ số phút làm việc z liên tục mỗi giờ theothức sau:76G.5\"Nhiệt độ cấp vào từ các hTG cơ khí và ĐHKK tv cầnkể đến độ tăng độ Δt, K, khi đi qua quạt:76G.6\"Tính toán lượ ng cấp bù chohút ra, hiện tại có nhiều tài liệu đã đề cập và cách xác định cấp bù khác nhau do nhiều yếu tố liên quan như: các cửa đi và cửa sổ của gian cómở hay đóng, các khe hở của các cửa khi đóng,kiện độ bên ngoài, hướng, vận tốc gi ó… Do đó, cần căn cứ vàokiện cụ thể của từngtrình để lựa chọn phương xác định kh ông khí bù lại thể tích sản phẩmbị đẩy ra ngoài đảm bảo quy định vềchữa[6].76H.1\"LượngG 1, kg/h, cần phải hút thải ra khỏi hành lang hay sảnh khi cócầ nxác định theo nhữngthức sau:79H.2\"LưuG, kg/h, thải ra từ gian cầnxác định theo chu vi vùng cháy.79H.3\"LưuG1bằng kg/h cần phải thải từ gian (lấy theokiện bảo vệ cửa thoát nạn) phải đ ược xác đị nh theothức ( H.5) cho chu kỳ mùavà kiểm lại cho mùa nóng năm, nếu tốc độ gió mùa nóng cao hơn mùa lạnh:80J.1\"Định nghĩa82J.2\"Tiêu chí phân loại chất82J.2.1\"Các chất có thểphân loại vào một năm loại nguy hiểm dựa trên độccấpqua đường miệng, dađường hô hấp theo tiêu chí giới hạn số như bảng dưới đây.82J.2.2\"Hphân loại hài hòa về độccấpđãphát triển theo cách phù hợp với nhu cầu của các hhiện có.83J.2.3\"Loài thử nghiệm ưu tiên để đánh giá độccấpqua đường miệng và đường hô hấp là chuột cống, khi chuột cốngthỏưu tiên s để đánh giá độccấpqua da.84J.2.4\"Loại 1, loại nguy hiểm cao nhất, có các giá trị giới hạn (xem Bảng J.1) hiệnngành giao thông vận tải s chủ yếu để phân loại cho các nhóm đóng gói.84J.2.5\"Loại 5 dành cho các c hất có độccấptương đối thấp nhưng một số trường hợp nhất định có thể gây nguy hiểm cho các quần thể dễ bị tổn thương.84J.2.6\"Cân nhắc cụ thể về độckhi hít phải84J.2.6.1\"Các giá trị về độckhi hít phải dựa trên các thử nghiệm 4 h trênvật th í nghiệm.84J.2.6.2\"Đơn vị độckhi hít phải là hàm số của dạng vật liệu hít vào.84J.2.6.3\"Các giá trị hít phải hơi khí nhằm mục đích s để phân loại độccấpcho tất cả các lĩnh vực.84J.2.6.4\"Đặc biệt quan trọng là việc s các giá trịdiễn đạt rõ ràng các loại nguy hiểm cao nhất đối với bụi và sương mù.84J.2.6.5\"Ngoài việc phân loại độcqua đường hô hấp, nếu có sẵn dữ liệu chỉ ra rằng cơ chế gây độc làăn mòn của chấthỗn hợp, một số cơ quan có thẩm quyền cũng có thể chọn dán nhãn là ăn mòn đường hô hấp.85J.3\"Tiêu chí phân loại hỗn hợp85J.3.1\"Tiêu chí cho các chất phân loại độccấpbằng cách s dữ liệu liều gây chết người (thử nghiệmdẫn xuất).85J.3.2\"Việc phân loại hỗn hợp cho độccấpcó thểthực hiện cho từng lộ trình tiếp xúc, nhưng chỉ cần thiết c ho một lộ trình tiếp x úc miễn là lộ trình nàytuân theo (ước t ínht hử nghiệm) cho tất cả các thành phần và có bằng chứng liên quan đến gợi ý độccấpbằng nhiều con đường.85J.3.3\"Để tận dụng tất cả các dữ liệu có sẵn ch o mục đích phân loại các mối nguy hiểm của hỗn hợp, một số giả định nhất định đãđưa ra vàáp dụng khi thích hợp theo cách tiếp cận theo từng cấp:85J.3.4\"Phân loại hỗn hợp khi có sẵn dữ liệu thử nghiệm độccấpcho hỗn hợp hoàn chỉnh86J.3.5\"Phân loại hỗn hợp khi có dữ liệu thử nghiệm độccấpđối với hỗn hợp hoàn chỉnh:86J.3.5.1\"Khi bản thân hỗn hợp chưathử nghiệm để xác định độccấpcủa nó, nhưng có đủ dữ liệu về cả các thàn h phần riêng lẻ và các hỗn hợpthử nghiệm tương tự để mô tả đầ y đủ các mối nguy hiểm của hỗn hợp, những dữ liệu này sẽs theo các nguyên tắc bắc cầu đãthống nhất sau đây.86J.3.5.2\"Pha loãng86J.3.5.3\"Chia mẻ86J.3.5.4\"Nồng độ của hỗn hợp có độccao86J.3.5.5\"Nội suy một loại nguy hiểm86J.3.5.6\"Các hỗn hợp về cơ bản tương tự86J.3.5.7\"Aerosols (son khí)87J.3.6\"Phân loại hỗn hợp dựa trên thành phần của hỗn hợp (công thức phụ gia).87J.3.6.1\"Dữ liệu có sẵn cho tất cả các thành phần87J.3.6.2\"Không có dữ liệu cho mộtnhiều thành phần của hỗn hợp88J.3.6.2\"Trong trường hợp một thành phần có bất kỳ thông tin hữu ích nào để phân loạis hỗn hợp ở nồng độ ≥ 1%, kết luận rằng hỗn hợp đó thểcoi là ướcđộccấpchính xác.88,\"d\":\"Số hiệu J.3.6.2 xuất hiện 2 lần thân văn bản (lần 1: 'Không có dữ liệu cho mộtnhiều thành phần của hỗn hợp'; lần 2 (mục này): 'Trong trường hợp một thành phần có bất kỳ thông tin hữu ích nào...'); có thể là lỗi đánh số nguồn (lẽ ra là J.3.6.2.2). Trích nguyên văn.\"J.3.6.2.1\"Trong trường hợp có sẵn ATE cho một thành phần riêng lẻ của h ỗn hợp, nhưng thông tin sẵn có như đ ược liệt kê bên dưới có thể cun g cấp giá trị chuyển đổisuy ra,thức E.1.3.6.1 có thểáp dụng.88J.3.6.2.3\"Nếu tổng nồng độ của (các) thành phần có liên quan với độccấpchưa bi ết là ≤ 10% thì nên sthức trình bày E.1.3.6.1.88J.4\"Truyền thông về nguy cơ89J.4.1\"Các cân nhắc chung và cụ thể liê n quan đến các yêu cầu ghi nhãncung cấp Truyền thông về nguy cơ: Ghi nhãn (Chương 1.4).89J.4.2\"Các tuyên bố về mối nguy hiểm độccấpphân biệt mối nguy hiểm dựa trên lộ trình phơi nhiễm.89K.1\"Phạm vi áp dụng91K.2\"Phương pháp kiểm soát91K.2.1\"Giải pháp chung91K.2.2\"Kiểm soát hướng di chuyển của luồng (phân phối) và bố trí s91K.3\"Hđiều hòa92K.3.1\"Các yêu cầu về hoạt động92K.4\"Tăng cường thô92K.4.1\"Cung cấp ngoài trời92K.4.1.1\"Lưu lượ tươi phải đáp ứng tối thiểu mức quy đ ịnh Bảng ở Phụ lục E.92K.4.1.2\"Nguồn cung c ấp ngoài tr ời ph ải đư ợc đặt ở chế độ tối đa đ ể tăng cường việc pha loãng nhà.92K.4.1.3\"Thời gian ho ạt đ ộng c ủa h đi ều hòa, trư ớc và sau khi có người ở, cầnxem xét để loại bỏ các dấu vết của tác nhân gây bệnh dài hơn.92K.4.2\"Làm sạch nhà92K.4.2.1\"Phải vận hành h lọc đ ể đưa ngoài tr ời vào giantrình và th ải nhà ra bên ngoài.92K.4.2.2\"Trong gian có h lọc, thời gian hoạtcủa hTG-ĐHKK phảikéo dài thêm hai giờ trước và sau khi có người ..92K.4.3\"Tthu hồi92K.5\"Tăng cường lọc và khử trùng93K.5.1\"Lọc khí93K.5.1.1\"Các bộ lọc hiệu quả cao có xếp hạng ít nhất là MERV 14 nênlắp đặt và vận hành các bộ xử lý ẩm (AHU) để xử lý tuần hoàn.93K.5.2\"Khử trùng93K.5.2.1\"Có thể s các tlàm sạch như chiếu xạ diệt khuẩn bằng tia cực tím (UVGI), tùy thuộc vào các hạn chế về gian, để nâng cao hiệu quả làm sạch và bổ sung cho các bộ lọc.93K.5.2.2\"Có thể xem xét cácngh ệ làm sạch khác (ví d ụ: chất ion lưỡng cựcchất oxy hóa xúc tác b ởi ánh sáng).93K.5.3\"Máy làm sạch di động93K.5.3.1\"Máy làm sạch di độngmáy lọc có bộ lọc hiệu suất cao có thểs để làm sạch c ục bộ, nếu hTG-ĐHKK thể lắp bộ lọc hiệu suất cao và nếu việc tăng cường thô là khả thi.93K.6\"Vận hành và bảo dưỡng93K.6.1\"Thô tối đa nhà vệ sinh và các khu vực chung93K.6.1.1\"Do quạt hút của nhà vệ sinh hoạthếtsuất thời gian hoạtlâu hơn,quan trọng là phải kiểm tra vòng đệm nước (siphông) cho các phụ kiện vệ sinh để đảm bảo rằng các nút bịt kín nước vẫnduy trì.93K.6.1.2\"Tại các khu v ực chung có nguy cơ t ụ tập đông ngư ời, chẳng hạn như s ảnh vào, phải có đủ lỗ thô và hút/thải.94Phụ lục A\"(Quy định) Thông sốtoán của bên nhà dùng để thiết kế ĐHKK đảm bảokiện tiện nghi39Phụ lục B\"(Quy định) Thông sốtoán bên ngoài chohòa theo số giờ bảo đảm, m (h/năm)hệ số bảo đảm KBĐ42Phụ lục C\"(Tham khảo) TSTT của bên ngoài theo mức vượt MV,% của độ khô và độ ướt57Phụ lục D\"(Quy định) Tiêu chuẩn giới hạn nồng độ cho phép của các hóa chất và bụi vùng làm việc66Phụ lục E\"(Quy định) Tiêu chuẩn ngoài (gió tươi) đảm bảo vệ sinh cho cácĐHKK70Phụ lục F\"(Quy định) Lưu ngoài (gió tươi) cho cácthô cơ khí73Phụ lục G\"(Tham khảo) Xác định lưu và độ cấp vào74Phụ lục H\"(Quy định) Tính toán lưucần phải thải khi có cháy79Phụ lục J\"(Tham khảo) Phân loại độccấpnguy hại cho sức khỏe82Phụ lục K\"(Tham khảo) Vận hành hTG-ĐHKK hiện hữu thời gian xảy ra đại dịch91Thư mục tài liệu tham khảo\"Thư mục tài liệu tham khảo95}],\"ai\":{\"c\":\"Hình 1 - Phân loại hđiều hòa16,\"d\":\"Trong file, Hình 1 chỉ tồn tại dưới dạng hình ảnh (dòng 467 chỉ có tiêu đề), có văn bản nhánh phân loại để trích nguyên văn. Các tiêu chí phân loạiliệt kê nguyên văn tại Điều 4.7.1 (xem mục dieu47).\",\"aj\":[\"a. Mục đích s: Điều hòa tiện nghi vàhòanghệ;\",\"b. Tính chất quan trọng;\",\"c. Tính tập trung;\",\"d. Cách làm lạnh;\",\"e. Cách phân phối;\",\"f. Năng suất lạnh;\",\"g. Chức năng (chỉ làmhay có khả năng làmvà sưởi ấm);\",\"h. Cách bố trí dàn lạnh.\"]},\"ak\":[{\"B\":\"a\",\"C\":\"Mục đích s: Điều hòa tiện nghi vàhòanghệ;\"},{\"B\":\"b\",\"C\":\"Tính chất quan trọng;\"},{\"B\":\"c\",\"C\":\"Tính tập trung;\"},{\"B\":\"d\",\"C\":\"Cách làm lạnh;\"},{\"B\":\"e\",\"C\":\"Cách phân phối;\"},{\"B\":\"f\",\"C\":\"Năng suất lạnh;\"},{\"B\":\"g\",\"C\":\"Chức năng (chỉ làmhay có khả năng làmvà sưởi ấm);\"},{\"B\":\"h\",\"C\":\"Cách bố trí dàn lạnh.\"}],\"al\":{\"c\":\"Bảng 1 - Lượ mất do rò rỉthâm nhập vào đường ống qua khe hở trên tuyến ống24,\"am\":\"Lượ rò rỉthâm nhập qua khe hở m3/h cho 1 m2 diện tích khai triển ống khi áp suất tĩnh dư (dương hay âm) trên đường ống tại vị trí sát quạt, Pa\",\"D\":[\"Cấp độ kín của ố\",\"0,2\",\"0,4\",\"0,6\",\"0,8\",\"1,0\",\"1,2\",\"1,4\",\"1,6\",\"1,8\",\"2,0\",\"2,5\",\"3,0\",\"3,5\",\"4,0\",\"4,5\",\"5,0\"],\"an\":\"m3/h cho 1 m2 diện tích khai triển ống\",\"E\":[{\"M\":\"BT\",\"N\":{\"O\":\"3,6\",\"P\":\"5,8\",\"Q\":\"7,8\",\"R\":\"9,2\",\"S\":\"10,7\",\"T\":\"12,1\",\"U\":\"13,4\",\"V\":\"-\",\"W\":\"-\",\"X\":\"-\",\"Y\":\"-\",\"Z\":\"-\",\"aa\":\"-\",\"ab\":\"-\",\"ac\":\"-\",\"ad\":\"-\"}},{\"M\":\"K\",\"N\":{\"O\":\"1,2\",\"P\":\"1,9\",\"Q\":\"2,5\",\"R\":\"3,0\",\"S\":\"3,5\",\"T\":\"4,0\",\"U\":\"4,4\",\"V\":\"4,9\",\"W\":\"5,3\",\"X\":\"5,7\",\"Y\":\"6,6\",\"Z\":\"7,5\",\"aa\":\"8,2\",\"ab\":\"9,1\",\"ac\":\"9,9\",\"ad\":\"10,6\"}}],\"d\":\"CHÚ THÍCH: 1) Lượ rò rỉthâm nhập qua khe hở, ρ,theo % lưu hữu ích của hđược xác định theothức sau đây: ρ = Kl Dm ρ0,67 (1) / Dv2 v\"},\"ao\":{\"c\":\"Bảng E.1 - Tiêu chuẩn ngoài (gió tươi) đảm bảo vệ sinh cho cácĐHKK\"70-72\",\"D\":[\"Tên\",\"Diện tích, m2/người\",\"Lượng ngoài yêu cầu m3/h.người\",\"Lượng ngoài yêu cầu m3/h.m2\",\"Ghi chú\"],\"E\":[{\"e\":\"ngủ\",\"f\":\"10\",\"g\":\"35\",\"h\":\"-\",\"d\":\"Không phụ thuộc diện tích.\"},{\"e\":\"khách\",\"f\":\"5\",\"g\":\"35\",\"h\":\"-e\":\"Hành lang\",\"f\":\"3\",\"g\":\"25\",\"h\":\"-e\":\"hội thảo\",\"f\":\"2\",\"g\":\"30\",\"h\":\"-e\":\"Hội trường\",\"f\":\"1\",\"g\":\"25\",\"h\":\"-e\":\"làm việc\",\"f\":\"12-14\",\"g\":\"30\",\"h\":\"-e\":\"Sảnh đón tiếp\",\"f\":\"1,5\",\"g\":\"25\",\"h\":\"-e\":\"ngủ tập thể\",\"f\":\"5\",\"g\":\"25\",\"h\":\"-e\":\"tắm\",\"f\":\"-\",\"g\":\"-\",\"h\":\"40\",\"d\":\"Dùng khi cần, thường xuyên.\"},{\"e\":\"Cửa hàng giặt khô\",\"f\":\"3\",\"g\":\"40\",\"h\":\"-e\":\"ăn\",\"f\":\"1,4\",\"g\":\"30\",\"h\":\"-e\":\"cà phê, thức ăn nhanh\",\"f\":\"1\",\"g\":\"30\",\"h\":\"-e\":\"Quầy ba, cốc-tai\",\"f\":\"1\",\"g\":\"35\",\"h\":\"-\",\"d\":\"Cần lắp đặt thêm hhút khói.\"},{\"e\":\"Nhà bếp (nấu nướng)\",\"f\":\"5\",\"g\":\"25\",\"h\":\"-\",\"d\":\"Phải có hhút mùi. Tổng ngoài và gió thâm nhập từ các kề bên phải đủ đảm bảo lưu hút thải dưới 27 m3/h.m2.\"},{\"e\":\"khán giả\",\"f\":\"0,7\",\"g\":\"25\",\"h\":\"-\",\"d\":\"Cần có thô đặc biệt để loại bỏ các ảnh hưởng của quá trình dàn dựng, ví dụ như khâu lửa khói, sương mù v..v…\"},{\"e\":\"Hành lang\",\"f\":\"0,7\",\"g\":\"20\",\"h\":\"-e\":\"Studio\",\"f\":\"1,5\",\"g\":\"25\",\"h\":\"-e\":\"bán vé\",\"f\":\"1,6\",\"g\":\"30\",\"h\":\"-e\":\"học\",\"f\":\"2\",\"g\":\"25\",\"h\":\"-e\":\"thí nghiệm (PTN)\",\"f\":\"3,3\",\"g\":\"35\",\"h\":\"-\",\"d\":\"Xem thêm quy định tại tài liệu của thử nghiệm.\"},{\"e\":\"hội thảo, tập huấn\",\"f\":\"3,3\",\"g\":\"30\",\"h\":\"-e\":\"Thư viện\",\"f\":\"5\",\"g\":\"25\",\"h\":\"-e\":\"Hội trường\",\"f\":\"0,7\",\"g\":\"25\",\"h\":\"-e\":\"học nhạc, học hát\",\"f\":\"2\",\"g\":\"25\",\"h\":\"-e\":\"Hành lang\",\"f\":\"-\",\"g\":\"-\",\"h\":\"2e\":\"kho\",\"f\":\"-\",\"g\":\"-\",\"h\":\"9\",\"d\":\"Chỉ hoạtkhi cần.\"},{\"e\":\"bệnh nhân\",\"f\":\"10\",\"g\":\"40\",\"h\":\"-e\":\"khám bệnh\",\"f\":\"5\",\"g\":\"25\",\"h\":\"-e\":\"phẫu thuật\",\"f\":\"5\",\"g\":\"50\",\"h\":\"-e\":\"khám nghiệm tử thi\",\"f\":\"-\",\"g\":\"-\",\"h\":\"9\",\"d\":\"Khônglấy tuần hoàn từ đây cấp vào các khác.\"},{\"e\":\"vật lý trị liệu\",\"f\":\"5\",\"g\":\"25\",\"h\":\"-e\":\"ăn\",\"f\":\"1\",\"g\":\"25\",\"h\":\"-e\":\"bảo vệ\",\"f\":\"2,5\",\"g\":\"25\",\"h\":\"-e\":\"Khán đài thi đấu\",\"f\":\"0,7\",\"g\":\"25\",\"h\":\"-e\":\"thi đấu\",\"f\":\"1,4\",\"g\":\"35\",\"h\":\"-e\":\"Sân trượt băng nhà\",\"f\":\"-\",\"g\":\"-\",\"h\":\"9e\":\"Bể bơi nhà có khán giả\",\"f\":\"-\",\"g\":\"-\",\"h\":\"9\",\"d\":\"Có thể đòi hỏi lưu lớn hơn để khống chế độ ẩm.\"},{\"e\":\"Sàn khiêu vũ\",\"f\":\"1\",\"g\":\"40\",\"h\":\"-e\":\"bowling\",\"f\":\"1,4\",\"g\":\"40\",\"h\":\"-e\":\"Hành lang và chứa đồ gia dụng\",\"f\":\"-\",\"g\":\"-\",\"h\":\"1e\":\"Dãy cửa hiệu buôn bán\",\"f\":\"5\",\"g\":\"-\",\"h\":\"4e\":\"Cửa hàng\",\"f\":\"20\",\"g\":\"-\",\"h\":\"1e\":\"nghỉ\",\"f\":\"1,5\",\"g\":\"25\",\"h\":\"-e\":\"hút thuốc\",\"f\":\"1,5\",\"g\":\"30\",\"h\":\"-\",\"d\":\"Phải hút thải khí, tuần hoàn khí thải.\"},{\"e\":\"Cửa hàng cắt tóc\",\"f\":\"4\",\"g\":\"25\",\"h\":\"-e\":\"Cửa hàng chăm sóc sắc đẹp\",\"f\":\"4\",\"g\":\"40\",\"h\":\"-e\":\"Cửa hàng quần áo, đồ gỗ\",\"f\":\"-\",\"g\":\"-\",\"h\":\"5e\":\"Cửa hàng bán hoa\",\"f\":\"12\",\"g\":\"25\",\"h\":\"-e\":\"Siêu thị\",\"f\":\"12\",\"g\":\"25\",\"h\":\"-e\":\"Sân ga (trong nhà)\",\"f\":\"1\",\"g\":\"25\",\"h\":\"-e\":\"làm việc\",\"f\":\"8-10\",\"g\":\"25\",\"h\":\"-e\":\"hội thảo, hội đồng, họp ban GĐ\",\"f\":\"1\",\"g\":\"30\",\"h\":\"-e\":\"chờ\",\"f\":\"2\",\"g\":\"25\",\"h\":\"-e\":\"ngủ\",\"f\":\"8-10\",\"g\":\"35\",\"h\":\"-e\":\"khách\",\"f\":\"8-10\",\"g\":\"30\",\"h\":\"-\",\"d\":\"\"}]},\"ap\":{\"c\":\"Bảng F.1 – Số lần trao đổi73,\"D\":[\"Loại,trình\",\"Số lần (bội số) trao đổi, lần/h\"],\"E\":[{\"t\":\"Công sở\",\"u\":\"6\",\"s\":\"lần/ht\":\"Nhà ở, ngủ\",\"u\":\"2-3\",\"s\":\"lần/ht\":\"ăn khách sạn, căng tin\",\"u\":\"10\",\"s\":\"lần/ht\":\"Cửa hàng, siêu thị\",\"u\":\"6\",\"s\":\"lần/ht\":\"học\",\"u\":\"8\",\"s\":\"lần/ht\":\"thí nghiệm\",\"u\":\"10-12\",\"s\":\"lần/ht\":\"Thư viện\",\"u\":\"5-6\",\"s\":\"lần/ht\":\"Bệnh viện\",\"u\":\"6-8\",\"s\":\"lần/ht\":\"Nhà hát, rạp chiếu bóng\",\"u\":\"8\",\"s\":\"lần/ht\":\"Sảnh, hành lang, cầu thang, lối ra**\",\"u\":\"4\",\"s\":\"lần/ht\":\"tắm, vệ sinh\",\"u\":\"10\",\"s\":\"lần/ht\":\"bếp (thương nghiệp, ký túc xá, xí nghiệp)\",\"u\":\"20\",\"s\":\"lần/ht\":\"Ga ra ô tô 6*\",\"u\":\"6*\",\"s\":\"lần/ht\":\"máy bơm cấp thoát nước\",\"u\":\"8\",\"s\":\"lần/h\",\"d\":\"\"}],\"ae\":[\"1) Áp dụng đối với chiều cao 2,5 m. Khi chiều cao trên 2,5 m, phảitheo tỷ lệ tăng của chiều cao;\",\"2) Sảnh có diện tích dưới 10 m2 yêu cầu phải có thô cơ khí;\",\"3) Đối với tầng hầm, bội số trao đổi có thể tăng thêm từ 20 % đến 50 %.\"]},\"aq\":{\"c\":\"Bảng G.1 - Chênh lệch áp suất qua các bộ phận cản khói77,\"D\":[\"Loạitrình\",\"Chiều cao trần, m\",\"Chênh lệch áp suất, Pa*\"],\"E\":[{\"H\":\"Không trang bị sprinkler\",\"I\":\"Bất kỳ\",\"J\":\"12,5\",\"s\":\"Pa\"},{\"H\":\"Có trang bị sprinkler\",\"I\":\"2,745\",\"J\":\"25\",\"s\":\"Pa\"},{\"H\":\"Có trang bị sprinkler\",\"I\":\"4,575\",\"J\":\"35\",\"s\":\"Pa\"},{\"H\":\"Có trang bị sprinkler\",\"I\":\"6,405\",\"J\":\"45\",\"s\":\"Pa\"}],\"ae\":[\"1. Bảng này là chênh lệch áp suất thiết kế tối thiểu trên cơ sở độlà 927 0C sát với bộ phận cản khói,\",\"2. Mục địch thiết kế là hkiểm soátphải duy trì chênh lệch áp suất tối thiểu theokiện thiết kế cho hiệu ứng ống khóigió.\",\"* Đối với hkiểm soáttheo vùng, chênh lệch áp suấtyêu cầu đo giữa vùngvà gian bên cạnh khi mà các khu vực bị ảnh hưởng ở trạng thái kiểm soát khói.\"]},\"ar\":{\"c\":\"Bảng H.1 - Hệ số phụ thuộc vào chiều rộng của cánh cửa đi79,\"D\":[\"Loạitrình\",\"Chiều rộng B (m)\",\"Hệ số\"],\"E\":[{\"y\":\"Nhà ở\",\"z\":\"0,6 m\",\"A\":\"1,00\"},{\"y\":\"Nhà ở\",\"z\":\"0,9 m\",\"A\":\"0,82\"},{\"y\":\"Nhà ở\",\"z\":\"1,2 m\",\"A\":\"0,70\"},{\"y\":\"Nhà ở\",\"z\":\"1,8 m\",\"A\":\"0,51\"},{\"y\":\"Nhà ở\",\"z\":\"2,4 m\",\"A\":\"0,41\"},{\"y\":\"Nhàcộng\",\"z\":\"0,6 m\",\"A\":\"1,05\"},{\"y\":\"Nhàcộng\",\"z\":\"0,9 m\",\"A\":\"0,91\"},{\"y\":\"Nhàcộng\",\"z\":\"1,2 m\",\"A\":\"0,80\"},{\"y\":\"Nhàcộng\",\"z\":\"1,8 m\",\"A\":\"0,62\"},{\"y\":\"Nhàcộng\",\"z\":\"2,4 m\",\"A\":\"0,50\"}]},\"as\":{\"c\":\"Bảng A.1 - Thông sốtoán hợp lý của bên nhà TG-ĐHKK phạm vi gian hoạtcủa nhà ở39,\"D\":[\"Mùa\",\"Phòng\",\"Nhiệt độ tiện nghi, °C\",\"Nhiệt độ giới hạn cho phép, °C\",\"Tốc độ chuyển động tiện nghi, m/s\",\"Tốc độ chuyển động tối đa cho phép, m/s\",\"Độ ẩm tương đối, %\"],\"E\":[{\"l\":\"Mùa- có sưởi ấm\",\"m\":\"1. ở nhà trọ, khách sạn\",\"n\":\"24,5\",\"o\":\"22 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"2. ở nhà ở\",\"n\":\"24,5\",\"o\":\"22 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"3. nghỉ và học tập nhà ở\",\"n\":\"24,5\",\"o\":\"22 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"4. sinh hoạt chung, tiếp khách\",\"n\":\"24,5\",\"o\":\"22 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"5. ăn\",\"n\":\"24,5\",\"o\":\"22 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"6. Bếp\",\"n\":\"23,5\",\"o\":\"21 - 24\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"7. vệ sinh\",\"n\":\"23,5\",\"o\":\"21 - 24\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"1. ở nhà trọ, khách sạn\",\"n\":\"26,2\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"2. ở nhà ở\",\"n\":\"26,2\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"3. nghỉ và học tập nhà ở\",\"n\":\"26,2\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"4. sinh hoạt chung, tiếp khách\",\"n\":\"26,2\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"5. ăn\",\"n\":\"26,2\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"6. Bếp\",\"n\":\"27\",\"o\":\"26 - 28\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"7. vệ sinh\",\"n\":\"27\",\"o\":\"26 - 28\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 70\"}],\"d\":\"Bảng có hai phần tiêu đề gộp ô: MÙA LẠNH - có sưởi ấm và MÙA NÓNG - cóhòa,lưu cột mua.\"},\"at\":{\"c\":\"Bảng A.2 - Thông sốtoán hợp lý của bên nhà TG-ĐHKK phạm vi gian hoạtcủa nhàcộng\"40-41\",\"D\":[\"Mùa\",\"Phòng\",\"Nhiệt độ tiện nghi, °C\",\"Nhiệt độ giới hạn cho phép, °C\",\"Tốc độ chuyển động tiện nghi, m/s\",\"Tốc độ chuyển động tối đa cho phép, m/s\",\"Độ ẩm tương đối, %\"],\"E\":[{\"l\":\"Mùa- có sưởi ấm\",\"m\":\"1. mổ, phẫu thuật\",\"n\":\"25\",\"o\":\"25 - 26\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"50 - 6a- có sưởi ấm\",\"m\":\"2. Thư viện, kho sách\",\"n\":\"25\",\"o\":\"23 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"50 - 6a- có sưởi ấm\",\"m\":\"3. Bảo tàng (hiện vật gỗ, giấy, da, đồ vật dán keo)\",\"n\":\"25\",\"o\":\"23 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"50 - 6a- có sưởi ấm\",\"m\":\"4. nhà trẻ và mẫu giáo\",\"n\":\"25\",\"o\":\"24 - 25\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"5. an dưỡng & bệnh nhân\",\"n\":\"24,5\",\"o\":\"23 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"6. học, làm việc hành chính, nghiên cứu, thiết kế, thí nghiệm, khám chữa bệnh\",\"n\":\"24,5\",\"o\":\"23 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"7. họp, ăn, câu lạc bộ, khán giả, chiếu phim\",\"n\":\"24,5\",\"o\":\"23 - 25\",\"p\":\"0,05 - 0,1\",\"q\":\"0,2\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"8. tập thể dục, thể thao và thi đấu\",\"n\":\"22,5\",\"o\":\"20 - 23\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"9. Tiền sảnh, thay quần áo, vệ sinh\",\"n\":\"23,5\",\"o\":\"22 - 24\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"10. hút thuốc\",\"n\":\"22,5\",\"o\":\"20 - 23\",\"p\":\"0,4 - 0,6\",\"q\":\"0,7\",\"r\":\"60 - 7a- có sưởi ấm\",\"m\":\"11. nhà trẻ và mẫu giáo\",\"n\":\"25\",\"o\":\"24 - 25\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"1. mổ, phẫu thuật\",\"n\":\"26\",\"o\":\"25 - 26\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"50 - 6a nóng - cóhòa\",\"m\":\"2. Thư viện, kho sách\",\"n\":\"26\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"50- 6a nóng - cóhòa\",\"m\":\"3. Bảo tàng (hiện vật gỗ, giấy, da, đồ vật dán keo)\",\"n\":\"26\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"50- 6a nóng - cóhòa\",\"m\":\"4. nhà trẻ và mẫu giáo\",\"n\":\"26\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60 - 7a nóng - cóhòa\",\"m\":\"5. an dưỡng & bệnh nhân\",\"n\":\"26\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60-7a nóng - cóhòa\",\"m\":\"6. học, làm việc hành chính, nghiên cứu, thiết kế, thí nghiệm, khám chữa bệnh\",\"n\":\"26\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60-7a nóng - cóhòa\",\"m\":\"7. họp, ăn, câu lạc bộ, khán giả, chiếu phim\",\"n\":\"26\",\"o\":\"25 - 27\",\"p\":\"0,1 - 0,2\",\"q\":\"0,3\",\"r\":\"60- 7a nóng - cóhòa\",\"m\":\"8. tập thể dục, thể thao và thi đấu\",\"n\":\"25\",\"o\":\"24 - 26\",\"p\":\"0,1 - 0,3\",\"q\":\"0,5\",\"r\":\"60- 7a nóng - cóhòa\",\"m\":\"9. Tiền sảnh, thay quần áo, vệ sinh\",\"n\":\"27\",\"o\":\"26 - 28\",\"p\":\"0,1 - 0,3\",\"q\":\"0,5\",\"r\":\"60- 7a nóng - cóhòa\",\"m\":\"10. hút thuốc\",\"n\":\"28\",\"o\":\"27 - 29\",\"p\":\"0,3-0,5\",\"q\":\"0,7\",\"r\":\"60- 70\"}],\"d\":\"Bảng chia hai trang: hàng 1-11 (mùa lạnh) và 3 hàng đầu mùa nóng ở trang 40, phần (Kết thúc) trang 41. Trong file, phần mùacó hàng 11 nhà trẻ và mẫu giáo lặp lại y hệt hàng 4 (lỗi in của văn bản gốc), giữ nguyên văn. Cuối bảng có chú thích về kiểm trakiện tiện nghi cục bộ khi độ bề mặt bức xạ lệch > 2,5 °C và độ chính xác duy trì vi khí hậu (Δt = ±1 °C, Δφ = ±7 %; máy ĐHKK cục bộ ±2 °C).\"},\"au\":[{\"v\":\"Hhút thảicơ khí riêng biệt\",\"w\":\"Cần có hhút thải cơ khí riêng biệt; khối khí thâm nhập thêm qua khe hở vào tuyến ống, mương, kênh dẫnxác định theotoán 6.11.8; khối khí thâm nhập thêm Gv (kg/h) qua van hútở trạng thái đóng xác định theo chỉ dẫn của nhà sản xuất, vượt quá Gv = 40,3(AvΔP)0,5n\",\"x\":\"7.4\"},{\"v\":\"Cửa hút(miệng hút)\",\"w\":\"Cửa hút(miệng hút) cần phải bố trí trên giếng thải khói, dưới trần hành lang hay trần sảnh; cho phép đấu nối cửa hútvào giếng thảiqua một ống nhánh hút\",\"x\":\"7.5\"},{\"v\":\"Vùng thoát/ bể chứa khói\",\"w\":\"Không gian diện tích lớn hơn 1 600 m2 phải chia thành nhiều vùng thoát khói; mỗi vùng vượt quá 1 600 m2, ngăn cách bởi vách đứng kín bằng vật liệu cháy treo từ trần xuống tới độ cao thấp quá 2,5 m cách sàn, hình thành bể chứa khói; khi dùng giải pháp giả định phân chia vùngthì phải bật tất cả các hhút xảđồng thời cho tất cả các vùng khi có cháy\",\"x\":\"7.7\"},{\"v\":\"Hhút thải tự nhiên\",\"w\":\"Nên s hhút thải tự nhiên để thảitrực tiếp từ các gian nhà một tầng qua các giếng thảicó van khóiqua các cửa trời thô bị tạt gió; nhà nhiều tầng phải thảibằng hhút cơ khí, bố trí các giếng thoáttự nhiên riêng biệt cho mỗi gian cách ly\",\"x\":\"7.10\"},{\"v\":\"Van(van hút khói)\",\"w\":\"Vanlắp trên giếng thảicủa hệ hút thải tự nhiên; lưu khí thâm nhập thêm qua van hútở trạng thái đóng phảitheo 7.4 b)\",\"x\":\"7.4 b) và 7.10\"},{\"v\":\"Hhút(cơ khí)\",\"w\":\"Hhútcầntrang bị: quạt thải ly tâm lắp đồng trục vớicơ thuộc cấp an toàn đồng nhất với cấp của gian phục vụ, có ống nối mềm; ống dẫn, kênh dẫn và van ngăntheo quy định về an toàn cháy; cửa thubố trí trên khu vực thảihay trên bể chứa khói, diện tích một cửa thuphục vụ nên vượt quá 1 000 m2;và sản phẩmphải xả ra bên ngoài nhà theo các phương án quy định (lên mái, qua cửa nắp hút khói, qua ô thoáng/giếng xảtrên tường ngoài, qua giếng xảtách biệt trên mặt đất)\",\"x\":\"7.11\"},{\"v\":\"Quạt thải ly tâm (quạt thải khói)\",\"w\":\"Quạt thải ly tâm lắp đồng trục vớicơ (có thể dùng quạt ly tâm mái) thuộc cấp an toàn đồng nhất với cấp của gian do hphục vụ; trường hợp dùng ống nối mềm thì phải làm bằng vật liệu cháy; quạt thảicầnche chắn bằng vách ngănloại 1; cho phép bố trí trên mặt mái và bên ngoàitrình, quạt bố trí ngoài nhà (trừ quạt mái) phải có lưới bảo vệ\",\"x\":\"7.11 a) và 7.12\"},{\"v\":\"Van ngăn cháy\",\"w\":\"Ống dẫn, kênh dẫn và van ngăntheo quy định về an toàncho nhà vàtrình [6]; tại các điểm ống dẫn gió xuyên qua kết cấu bao che củatrang bị hchữabằng khí (trừ ố đi ngang qua) phải bố trí van ngăncó giới hạn chịu lửa theo quy định [6]\",\"x\":\"7.11 b) và 7.13\"},{\"v\":\"Cửa thu khói\",\"w\":\"Cửa thucầnbố trí trên khu vực thải khói, hay trên bể chứa khói; diện tích do một cửa thuphục vụ nên vượt quá 1 000 m2\",\"x\":\"7.11 c)\"},{\"v\":\"Cửa nắp hút khói\",\"w\":\"Khói xả ra ngoài nhà qua các cửa nắp hút khói, có xét đến vận tốc gió bên ngoài nhà\",\"x\":\"7.11 d)\"},{\"v\":\"Hcấp chống(cấp gió tạo áp)\",\"w\":\"Cấp gió ngoài vào khu vực bảo vệ chống(khu vực thoát nạn) để tạo áp suất dương khi có cháy, tại các vị trí: giếng thang máy, khoang đệm của giếng thang máy chữa cháy, buồng thang bộ nhiễmloại N2, khoang đệm ngăntại tầng cócủa buồng thang bộ loại N3, khoang đệm ngănkép từ cửa ra thang máy vào gian để xe của ga ra ngầm, khoang đệm ngănở cầu thang bộ bên nhà, khoang đệm ngănở lối vào sảnh thông tầng và khu bán hàng, khoang đệm ở buồng thang bộ loại N2 nhà cao tầng; lưutoán đảm bảo áp suất dư từ 20 Pa đến 50 Pa; hphải khởitựtheo lệnh báo cháy; cửa lấy gió ngoài cách cửa xảdưới 5 m; đặt van một chiều ở quạt\",\"x\":\"7.15, 7.16 và 7.19\"},{\"v\":\"Van một chiều ở quạt\",\"w\":\"Đặt van một chiều ở quạt của hcấp gió tạo áp; có thể đặt nếu gian sản xuất nơi lắp đặt hcó dư vượt quá 20 W/m3\",\"x\":\"7.19 e)\"}],\"av\":[{\"F\":\"Bảng D.1\"Bảng D.1 - Giá trị giới hạn tiếp xúc tối đa cho phép các yếu tố hóa học tại nơi làm việc\"66-68\",\"G\":50},{\"F\":\"Bảng D.2\"Bảng D.2 - Giá trị giới hạn tiếp xúc tối đa cho phép bụi amiăng tại nơi làm việc68,\"G\":2},{\"F\":\"Bảng D.3\"Bảng D.3 - Giá trị giới hạn tiếp xúc tối đa cho phép bụi silic tại nơi làm việc68,\"G\":2},{\"F\":\"Bảng D.4\"Bảng D.4 - Giá trị giới hạn tiếp xúc tối đa cho phép bụi chứa silic tại nơi làm việc69,\"G\":4},{\"F\":\"Bảng D.5\"Bảng D.5 - Giá trị giới hạn tiếp xúc tối đa cho phép bụi bông tại nơi làm việc69,\"G\":1},{\"F\":\"Bảng D.6\"Bảng D.6 - Giá trị giới hạn tiếp xúc tối đa cho phép bụi than tại nơi làm việc69,\"G\":2}]}";for(let __i=0;__i<__D.length;__i++)__S=__S.split(String.fromCharCode(57344+__i)).join(__D[__i]);const TCVN_DATA=__X(JSON.parse(__S));
+</script>
+<script>
+"use strict";
+const DB = TCVN_DATA;
+
+function khongDau(s){return (s==null?"":String(s)).normalize("NFD").replace(/đ/g,"d").replace(/Đ/g,"D").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function parseSo(s){if(s==null)return null;s=String(s).trim().replace(",",".");if(!s||s==="-")return null;
+var m=s.match(/^(-?[\d.]+)\s*-\s*(-?[\d.]+)$/);if(m){return[(+m[1]),(+m[2])];}
+var n=parseFloat(s);return isNaN(n)?null:n;}
+function fmtSo(x){if(x==null)return "-";if(Array.isArray(x))return fmtSo(x[0])+" – "+fmtSo(x[1]);
+return (Math.round(x*100)/100).toString();}
+function hl(text,kw){if(!kw)return esc(text);var t=esc(String(text==null?"":text));
+try{var re=new RegExp("("+kw.trim().split(/\s+/).map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}).join("|")+")","gi");
+return t.replace(re,"<mark>$1</mark>");}catch(e){return t;}}
+
+document.getElementById("tabbar").addEventListener("click",function(e){
+var b=e.target.closest("button");if(!b)return;
+document.querySelectorAll("#tabbar button").forEach(function(x){x.classList.remove("active");});
+b.classList.add("active");
+document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active");});
+document.getElementById("tab-"+b.dataset.tab).classList.add("active");
+window.scrollTo(0,0);
+});
+</script>
+
+<script>
+"use strict";
+
+(function(){
+var e1=DB.bangE1.hang, f1=DB.bangF1.hang;
+var aRows=DB.bangA1.hang.concat(DB.bangA2.hang);
+var names={};
+e1.forEach(function(r){names[r.ten_phong]=1;});
+f1.forEach(function(r){names[r.loai_phong_khong_gian]=1;});
+aRows.forEach(function(r){names[r.phong.replace(/^\d+\.\s*/,"")]=1;});
+var dl=document.getElementById("room-list");
+Object.keys(names).sort().forEach(function(n){
+var o=document.createElement("option");o.value=n;dl.appendChild(o);
+});
+function tim(rows,kw,fields){
+var k=khongDau(kw);if(!k)return[];
+var out=[];
+rows.forEach(function(r){
+var hay=fields.map(function(f){return khongDau(r[f]);}).join(" ");
+var p=hay.indexOf(k);if(p>=0)out.push([p,r]);
+});
+out.sort(function(a,b){return a[0]-b[0];});
+return out.slice(0,8).map(function(x){return x[1];});
+}
+window.roomSearch=function(){
+var kw=document.getElementById("room-q").value.trim();
+var box=document.getElementById("room-results");box.innerHTML="";
+if(!kw){box.innerHTML='<div class="card"><p class="small">Nhập tên loại phòng rồi bấm Tra cứu.</p></div>';return;}
+var rE1=tim(e1,kw,["ten_phong"]), rF1=tim(f1,kw,["loai_phong_khong_gian"]),
+rA=tim(aRows,kw,["phong"]);
+if(!rE1.length&&!rF1.length&&!rA.length){
+box.innerHTML='<div class="card"><p>Không tìm thấy loại phòng nào với "'+esc(kw)+'". Thử từ khóa ngắn hơn.</p></div>';return;
+}
+var h="";
+rE1.forEach(function(r,i){
+var qn=parseSo(r.luong_kk_m3h_nguoi), qm=parseSo(r.luong_kk_m3h_m2);
+h+='<div class="card"><h3>🌿 '+esc(r.ten_phong)+'</h3>'
++'<span class="badge">Gió tươi · Bảng E.1</span>'
++'<div class="kv"><span class="k">Diện tích bình quân</span><span class="v">'+esc(r.dien_tich_m2_nguoi)+' m²/người</span></div>'
++'<div class="kv"><span class="k">Lưu lượng/người</span><span class="v">'+esc(r.luong_kk_m3h_nguoi)+' m³/h.người</span></div>'
++'<div class="kv"><span class="k">Lưu lượng/m²</span><span class="v">'+esc(r.luong_kk_m3h_m2)+' m³/h.m²</span></div>'
++(r.ghi_chu?'<div class="note">'+esc(r.ghi_chu)+'</div>':"")
++'<div class="row">'
++(qn!=null&&!Array.isArray(qn)?'<div><input type="number" id="e1n'+i+'" placeholder="Số người"><button class="btn ghost" onclick="roomCalcE1('+i+',\'n\')">Tính</button></div>':"")
++(qm!=null&&!Array.isArray(qm)?'<div><input type="number" id="e1s'+i+'" placeholder="Diện tích m²"><button class="btn ghost" onclick="roomCalcE1('+i+',\'s\')">Tính</button></div>':"")
++'</div><div class="result" id="e1r'+i+'" style="display:none"></div>'
++'<div class="src">Nguồn: Bảng E.1, TCVN 5687:2024 (trang 70–72)</div></div>';
+window["_e1_"+i]={qn:qn,qm:qm};
+});
+rF1.forEach(function(r,i){
+var n=parseSo(r.so_lan_trao_doi);
+h+='<div class="card"><h3>🔄 '+esc(r.loai_phong_khong_gian)+'</h3>'
++'<span class="badge">Bội số trao đổi khí · Bảng F.1</span>'
++'<div class="kv"><span class="k">Số lần trao đổi</span><span class="v">'+esc(r.so_lan_trao_doi)+' '+(r.don_vi||"lần/h")+'</span></div>'
++(r.ghi_chu?'<div class="note">'+esc(r.ghi_chu)+'</div>':"")
++(n!=null&&!Array.isArray(n)?'<div class="row"><div><input type="number" id="f1v'+i+'" placeholder="Thể tích phòng (m³)"></div><div><button class="btn ghost" onclick="roomCalcF1('+i+')">Tính lưu lượng</button></div></div><div class="result" id="f1r'+i+'" style="display:none"></div>':"")
++'<div class="src">Nguồn: Bảng F.1, TCVN 5687:2024 (trang 73)</div></div>';
+window["_f1_"+i]=n;
+});
+rA.forEach(function(r){
+h+='<div class="card"><h3>🌡️ '+esc(r.phong)+'</h3>'
++'<span class="badge">Thông số trong nhà · Phụ lục A</span> <span class="badge">'+esc(r.mua)+'</span>'
++'<div class="kv"><span class="k">Nhiệt độ tiện nghi</span><span class="v">'+esc(r.nhiet_do_tien_nghi)+' °C</span></div>'
++'<div class="kv"><span class="k">Nhiệt độ giới hạn cho phép</span><span class="v">'+esc(r.nhiet_do_gioi_han_cho_phep)+' °C</span></div>'
++'<div class="kv"><span class="k">Tốc độ gió tiện nghi</span><span class="v">'+esc(r.toc_do_gio_tien_nghi)+' m/s</span></div>'
++'<div class="kv"><span class="k">Tốc độ gió tối đa cho phép</span><span class="v">'+esc(r.toc_do_gio_toi_da_cho_phep)+' m/s</span></div>'
++'<div class="kv"><span class="k">Độ ẩm tương đối</span><span class="v">'+esc(r.do_am_tuong_doi)+' %</span></div>'
++'<div class="src">Nguồn: Phụ lục A, TCVN 5687:2024 (trang 39–41)</div></div>';
+});
+box.innerHTML=h;
+};
+window.roomCalcE1=function(i,mode){
+var d=window["_e1_"+i],box=document.getElementById("e1r"+i);
+var val=parseFloat(document.getElementById(mode==="n"?"e1n"+i:"e1s"+i).value);
+if(!(val>0)){box.style.display="block";box.textContent="Nhập số hợp lệ.";return;}
+var q=mode==="n"?d.qn*val:d.qm*val;
+box.style.display="block";
+box.textContent="Lưu lượng gió tươi tối thiểu: "+fmtSo(q)+" m³/h";
+};
+window.roomCalcF1=function(i){
+var n=window["_f1_"+i],box=document.getElementById("f1r"+i);
+var v=parseFloat(document.getElementById("f1v"+i).value);
+if(!(v>0)){box.style.display="block";box.textContent="Nhập thể tích hợp lệ.";return;}
+box.style.display="block";
+box.textContent="Lưu lượng thông gió: "+fmtSo(n*v)+" m³/h";
+};
+document.getElementById("room-q").addEventListener("keydown",function(e){if(e.key==="Enter")roomSearch();});
+})();
+</script>
+
+<section class="tab" id="tab-calc">
+<div class="card">
+<h3>🧮 Tính lưu lượng gió tươi (Bảng E.1)</h3>
+<select id="calc-e1-room"></select>
+<div class="row">
+<input type="number" id="calc-e1-n" placeholder="Số người">
+<input type="number" id="calc-e1-s" placeholder="Diện tích (m²)">
+</div>
+<button class="btn" onclick="calcE1()">Tính</button>
+<div class="result" id="calc-e1-r" style="display:none"></div>
+<p class="small" id="calc-e1-info"></p>
+</div>
+<div class="card">
+<h3>🧮 Tính theo bội số trao đổi khí (Bảng F.1)</h3>
+<select id="calc-f1-room"></select>
+<input type="number" id="calc-f1-v" placeholder="Thể tích phòng (m³) = dài × rộng × cao">
+<button class="btn" onclick="calcF1()">Tính</button>
+<div class="result" id="calc-f1-r" style="display:none"></div>
+</div>
+<div class="card">
+<h3>🧮 Rò rỉ gió qua khe hở ống gió (Bảng 1, trang 24)</h3>
+<div class="row">
+<select id="calc-b1-cap"><option value="BT">Cấp kín BT</option><option value="K">Cấp kín K</option></select>
+<input type="number" id="calc-b1-p" placeholder="Áp suất tĩnh dư (Pa)">
+</div>
+<button class="btn" onclick="calcB1()">Tra cứu</button>
+<div class="result" id="calc-b1-r" style="display:none"></div>
+<p class="small">Đơn vị: m³/h cho 1 m² diện tích khai triển ống. Lấy theo cột áp suất gần nhất.<br>
+<b>Lưu ý (6.11.8):</b> dùng cấp <b>K</b> khi áp suất tĩnh tại quạt &gt; 1 400 Pa, cho hệ thống hút thải cục bộ và hệ thống ĐHKK; các trường hợp còn lại dùng cấp <b>BT</b>.</p>
+</div>
+</section>
+<script>
+"use strict";
+(function(){
+var e1=DB.bangE1.hang, f1=DB.bangF1.hang;
+var se=document.getElementById("calc-e1-room");
+e1.forEach(function(r,i){var o=document.createElement("option");o.value=i;
+o.textContent=r.ten_phong+" ("+r.luong_kk_m3h_nguoi+" m³/h.ng | "+r.luong_kk_m3h_m2+" m³/h.m²)";se.appendChild(o);});
+var sf=document.getElementById("calc-f1-room");
+f1.forEach(function(r,i){var o=document.createElement("option");o.value=i;
+o.textContent=r.loai_phong_khong_gian+" ("+r.so_lan_trao_doi+" lần/h)";sf.appendChild(o);});
+function updE1info(){
+var r=e1[+se.value];
+document.getElementById("calc-e1-info").textContent=
+"Định mức: "+r.luong_kk_m3h_nguoi+" m³/h.người | "+r.luong_kk_m3h_m2+" m³/h.m²"
++(r.ghi_chu?(" — "+r.ghi_chu):"");
+}
+se.addEventListener("change",updE1info);updE1info();
+window.calcE1=function(){
+var r=e1[+se.value],box=document.getElementById("calc-e1-r");
+var n=parseFloat(document.getElementById("calc-e1-n").value),
+s=parseFloat(document.getElementById("calc-e1-s").value);
+var qn=parseSo(r.luong_kk_m3h_nguoi),qm=parseSo(r.luong_kk_m3h_m2),out=[];
+if(n>0&&qn!=null&&!Array.isArray(qn))out.push(fmtSo(qn*n)+" m³/h (theo "+n+" người)");
+if(s>0&&qm!=null&&!Array.isArray(qm))out.push(fmtSo(qm*s)+" m³/h (theo "+s+" m²)");
+box.style.display="block";
+box.innerHTML=out.length?("Lưu lượng gió tươi tối thiểu:<br>"+out.join("<br>")):"Nhập số người hoặc diện tích.";
+};
+window.calcF1=function(){
+var r=f1[+sf.value],box=document.getElementById("calc-f1-r");
+var v=parseFloat(document.getElementById("calc-f1-v").value),n=parseSo(r.so_lan_trao_doi);
+box.style.display="block";
+if(!(v>0)||n==null||Array.isArray(n)){box.textContent="Nhập thể tích hợp lệ.";return;}
+box.innerHTML="Lưu lượng thông gió:<br>"+fmtSo(n)+" × "+fmtSo(v)+" = <b>"+fmtSo(n*v)+" m³/h</b>";
+};
+window.calcB1=function(){
+var b=DB.bang1,box=document.getElementById("calc-b1-r");
+var cap=document.getElementById("calc-b1-cap").value;
+var p=parseFloat(document.getElementById("calc-b1-p").value);
+var row=null;b.hang.forEach(function(r){if(r.cap_do_kin===cap)row=r;});
+box.style.display="block";
+if(!row||!(p>=0)){box.textContent="Nhập áp suất hợp lệ.";return;}
+var keys=b.cot.slice(1);
+var nearKey=keys.reduce(function(a,c){return Math.abs(parseSo(c)-p)<Math.abs(parseSo(a)-p)?c:a;});
+var val=row.gia_tri[nearKey];
+box.innerHTML="Cấp "+cap+" · áp suất ≈ "+esc(nearKey)+" Pa:<br>"
++((val&&val!=="-")?("<b>"+esc(val)+" m³/h</b> / 1 m² ống")
+:("Bảng không quy định giá trị tại mức áp suất này (—)"));
+};
+})();
+</script>
+
+<section class="tab" id="tab-classify">
+<div class="card">
+<h3>🏷️ Phân loại hệ thống TG-ĐHKK</h3>
+<p class="small">Theo 8 tiêu chí Điều 4.7.1 + cấp TSTT Điều 5.2.2. Mục <b>[TC]</b> trích nguyên văn tiêu chuẩn, <b>[TK]</b> là gợi ý tham khảo thực tế.</p>
+<div id="wiz"></div>
+</div>
+<div class="card">
+<h3>🔩 Phân loại van</h3>
+<p class="small">Chọn trường hợp lắp đặt để xác định loại van theo Điều 3.32–3.34:</p>
+<button class="opt" onclick="vanInfo(0)">1. Van phân nhánh ống gió tại mỗi tầng từ ống gom đứng → <b>Van gió</b> (3.32)</button>
+<button class="opt" onclick="vanInfo(1)">2. Van trên lỗ mở giếng hút khói ở hành lang/sảnh, thường đóng, chịu lửa E → <b>Van khói</b> (3.33)</button>
+<button class="opt" onclick="vanInfo(2)">3. Van che chắn kênh gió/lỗ mở kết cấu bao che, chịu lửa EI → <b>Van ngăn cháy</b> (3.34)</button>
+<div id="van-r"></div>
+</div>
+</section>
+<script>
+"use strict";
+(function(){
+var steps=[
+{k:"a) Mục đích sử dụng [TC]",q:"[TC] a) Mục đích sử dụng:",opts:["Điều hòa tiện nghi","Điều hòa công nghệ"]},
+{k:"Cấp TSTT ngoài trời (5.2.2) [TC]",q:"[TC] Cấp TSTT ngoài trời (Điều 5.2.2):",opts:["Cấp I — công trình có công năng đặc biệt quan trọng (m=35 h/năm)","Cấp II — công trình công năng thông thường (m=150–200 h/năm)","Cấp III — không đòi hỏi cao về nhiệt ẩm (m=350–400 h/năm)"]},
+{k:"c) Tính tập trung [TK]",q:"[TK] c) Tính tập trung:",opts:["Tập trung (trung tâm — 1 gian máy cấp nhiều khu vực)","Cục bộ (độc lập từng phòng)"]},
+{k:"d) Cách làm lạnh không khí [TK]",q:"[TK] d) Cách làm lạnh không khí:",opts:["Gián tiếp qua nước lạnh (chiller/AHU/FCU)","Trực tiếp bằng môi chất bay hơi (DX, VRV/VRF)"]},
+{k:"e) Cách phân phối không khí [TK]",q:"[TK] e) Cách phân phối không khí:",opts:["Toàn gió (all-air)","Gió – nước (air-water)"]},
+{k:"f) Năng suất lạnh [TK]",q:"[TK] f) Năng suất lạnh:",free:"Nhập năng suất (kW hoặc TR), bỏ qua nếu chưa rõ"},
+{k:"g) Chức năng [TC]",q:"[TC] g) Chức năng:",opts:["Chỉ làm lạnh","Làm lạnh và sưởi ấm"]},
+{k:"h) Cách bố trí dàn lạnh [TK]",q:"[TK] h) Cách bố trí dàn lạnh:",free:"Ví dụ: âm trần nối ống gió / treo tường / cassette / đặt sàn"}
+];
+var idx=0,ans={};
+var wiz=document.getElementById("wiz");
+function render(){
+if(idx>=steps.length){renderResult();return;}
+var st=steps[idx],h='<div class="stepbar">';
+for(var i=0;i<steps.length;i++)h+='<span class="'+(i<idx?"done":"")+'"></span>';
+h+='</div><div class="q">'+esc(st.q)+'</div>';
+if(st.opts){
+st.opts.forEach(function(o,j){
+h+='<button class="opt'+(ans[st.k]===o?" sel":"")+'" onclick="wizPick('+j+')">'+esc(o)+'</button>';
+});
+}else{
+h+='<input type="text" id="wiz-free" placeholder="'+esc(st.free||"")+'" value="'+esc(ans[st.k]||"")+'">'
++'<button class="btn" onclick="wizNext()">Tiếp tục →</button>';
+}
+wiz.innerHTML=h;
+var fi=document.getElementById("wiz-free");
+if(fi){fi.addEventListener("keydown",function(e){if(e.key==="Enter")wizNext();});fi.focus();}
+}
+window.wizPick=function(j){ans[steps[idx].k]=steps[idx].opts[j];idx++;render();};
+window.wizNext=function(){
+var v=document.getElementById("wiz-free").value.trim();
+ans[steps[idx].k]=v||"(chưa xác định)";idx++;render();
+};
+window.wizBack=function(){if(idx>0){idx--;render();}};
+window.wizRestart=function(){idx=0;ans={};render();};
+function renderResult(){
+var capB={"Cấp I":"Đặc biệt quan trọng","Cấp II":"Thông thường","Cấp III":"Không đòi hỏi cao"};
+var capKey=Object.keys(capB).find(function(k){return (ans["Cấp TSTT ngoài trời (5.2.2) [TC]"]||"").indexOf(k)===0;});
+var h='<div class="card" style="border-color:var(--brand)"><h3>📋 Phiếu phân loại hệ thống TG-ĐHKK</h3>';
+steps.forEach(function(st){
+var v=ans[st.k]||"(chưa xác định)";
+h+='<div class="kv"><span class="k">'+esc(st.k)+'</span><span class="v">'+esc(v)+'</span></div>';
+});
+h+='<div class="kv"><span class="k">b) Tính chất quan trọng [TC]</span><span class="v">'+esc(capB[capKey]||"—")+'</span></div>';
+h+='<div class="src">Căn cứ: Điều 4.7.1 (a–h), Điều 5.2.2, Hình 1 — TCVN 5687:2024</div>'
++'<div class="row"><button class="btn ghost" onclick="wizBack()">← Sửa lại</button>'
++'<button class="btn ghost" onclick="wizRestart()">Làm lại</button>'
++'<button class="btn" onclick="wizCopy()">📋 Chép phiếu</button></div></div>';
+wiz.innerHTML=h;
+}
+window.wizCopy=function(){
+var t="PHIẾU PHÂN LOẠI HỆ THỐNG TG-ĐHKK (TCVN 5687:2024)\n";
+steps.forEach(function(st){t+="- "+st.k+": "+(ans[st.k]||"")+"\n";});
+navigator.clipboard.writeText(t).then(function(){alert("Đã chép phiếu phân loại.");});
+};
+render();
+
+var subVans=["Van ngăn cháy thường mở (đóng khi có cháy)","Van ngăn cháy thường đóng (mở khi có cháy hoặc sau cháy)","Van ngăn cháy kép (đóng khi có cháy và mở sau cháy)"];
+window.vanInfo=function(i){
+var t=DB.van_types[i],box=document.getElementById("van-r");
+var h='<div class="card" style="border-color:var(--brand)"><h3>'+esc(t.loai_van)+'</h3><p>'+esc(t.dinh_nghia)+'</p>';
+if(i===2){h+='<p><b>Gồm 3 dạng:</b></p><ul>'+subVans.map(function(s){return "<li>"+esc(s)+"</li>";}).join("")+"</ul>";}
+else if(t.cac_dang_con){h+="<ul>"+t.cac_dang_con.map(function(s){return "<li>"+esc(s)+"</li>";}).join("")+"</ul>";}
+h+='<div class="src">Nguồn: Điều 3.32–3.34, TCVN 5687:2024</div></div>';
+box.innerHTML=h;box.scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+})();
+</script>
+
+<section class="tab" id="tab-search">
+<div class="card">
+<h3>🔍 Tìm kiếm tự do</h3>
+<p class="small">Tìm trong 306 điều khoản, 36 thuật ngữ và toàn bộ bảng số liệu. Gõ không dấu vẫn được.</p>
+<input type="text" id="s-q" placeholder="Nhập từ khóa, ví dụ: van khoi, gio tuoi, ap suat…" autocomplete="off">
+<div class="chips" id="s-chips">
+<span class="chip active" data-f="all">Tất cả</span>
+<span class="chip" data-f="clause">Điều khoản</span>
+<span class="chip" data-f="term">Thuật ngữ</span>
+<span class="chip" data-f="table">Bảng số liệu</span>
+</div>
+<button class="btn" onclick="doSearch()">Tìm kiếm</button>
+</div>
+<div id="s-results"></div>
+</section>
+<script>
+"use strict";
+(function(){
+var curF="all";
+document.getElementById("s-chips").addEventListener("click",function(e){
+var c=e.target.closest(".chip");if(!c)return;curF=c.dataset.f;
+document.querySelectorAll("#s-chips .chip").forEach(function(x){x.classList.remove("active");});
+c.classList.add("active");doSearch();
+});
+function tim(rows,kw,fields,lim){
+var k=khongDau(kw);if(!k)return[];
+var out=[];
+rows.forEach(function(r){
+var hay=fields.map(function(f){return khongDau(r[f]);}).join(" ");
+var p=hay.indexOf(k);if(p>=0)out.push([p,r]);
+});
+out.sort(function(a,b){return a[0]-b[0];});
+return out.slice(0,lim||20).map(function(x){return x[1];});
+}
+window.doSearch=function(){
+var kw=document.getElementById("s-q").value.trim();
+var box=document.getElementById("s-results");box.innerHTML="";
+if(!kw){box.innerHTML='<div class="card"><p class="small">Nhập từ khóa rồi bấm Tìm kiếm.</p></div>';return;}
+var h="",n=0;
+if(curF==="all"||curF==="clause"){
+var rc=tim(DB.clauses,kw,["so","tieu_de"],15);
+if(rc.length){h+='<div class="card"><h3>📄 Điều khoản ('+rc.length+')</h3>';
+rc.forEach(function(c){h+='<div class="hit"><div class="t">'+hl("Điều "+c.so+": "+c.tieu_de,kw)+'</div><div class="d">Trang '+c.trang+'</div></div>';n++;});
+h+='</div>';}
+}
+if(curF==="all"||curF==="term"){
+var rt=tim(DB.glossary,kw,["ten_vi","ten_en","dinh_nghia"],10);
+if(rt.length){h+='<div class="card"><h3>📖 Thuật ngữ Điều 3 ('+rt.length+')</h3>';
+rt.forEach(function(t){h+='<div class="hit"><div class="t">'+hl(t.so+". "+t.ten_vi+(t.ten_en?" ("+t.ten_en+")":""),kw)+'</div><div class="d">'+hl(t.dinh_nghia,kw)+'</div></div>';n++;});
+h+='</div>';}
+}
+if(curF==="all"||curF==="table"){
+var groups=[
+["Bảng E.1 — Gió tươi","bangE1",["ten_phong"],"ten_phong","trang 70–72"],
+["Bảng F.1 — Bội số trao đổi khí","bangF1",["loai_phong_khong_gian"],"loai_phong_khong_gian","trang 73"],
+["Bảng A.1/A.2 — Thông số trong nhà","bangA",["phong"],"phong","trang 39–41"],
+["Bảng G.1 — Chênh lệch áp suất","bangG1",["doi_tuong"],"doi_tuong","trang 77"]
+];
+var aAll=DB.bangA1.hang.concat(DB.bangA2.hang);
+var found=false,hh='<div class="card"><h3>📊 Bảng số liệu</h3>';
+groups.forEach(function(g){
+var rows=g[1]==="bangA"?aAll:DB[g[1]].hang;
+var rr=tim(rows,kw,g[2],6);
+if(rr.length){found=true;
+hh+='<p><b>'+g[0]+'</b> <span class="small">('+g[4]+')</span></p>';
+rr.forEach(function(r){hh+='<div class="hit"><div class="t">'+hl(r[g[3]],kw)+'</div></div>';n++;});}
+});
+if(found){box.innerHTML=h+hh+'</div>';return;}
+}
+box.innerHTML=h||'<div class="card"><p>Không tìm thấy gì với "'+esc(kw)+'".</p></div>';
+if(n===0&&h)box.innerHTML='<div class="card"><p>Không tìm thấy gì với "'+esc(kw)+'".</p></div>';
+};
+document.getElementById("s-q").addEventListener("keydown",function(e){if(e.key==="Enter")doSearch();});
+})();
+</script>
+
+<section class="tab" id="tab-tables">
+<div id="lib"></div>
+</section>
+<script>
+"use strict";
+(function(){
+function tbl(cot,rows,fmt){
+var h='<div style="overflow-x:auto"><table class="data"><tr>'+cot.map(function(c){return "<th>"+esc(c)+"</th>";}).join("")+"</tr>";
+rows.forEach(function(r){h+="<tr>"+fmt(r).map(function(c){return "<td>"+c+"</td>";}).join("")+"</tr>";});
+return h+"</table></div>";
+}
+var L="";
+L+='<details class="acc" open><summary>Bảng E.1 — Tiêu chuẩn gió tươi (55 loại phòng · tr.70–72)</summary><div class="body">'
++tbl(["Loại phòng","m²/người","m³/h.người","m³/h.m²","Ghi chú"],DB.bangE1.hang,function(r){
+return [esc(r.ten_phong),esc(r.dien_tich_m2_nguoi),"<b>"+esc(r.luong_kk_m3h_nguoi)+"</b>","<b>"+esc(r.luong_kk_m3h_m2)+"</b>",esc(r.ghi_chu||"")];})
++'</div></details>';
+L+='<details class="acc"><summary>Bảng F.1 — Số lần trao đổi không khí (tr.73)</summary><div class="body">'
++tbl(["Loại phòng, công trình","Số lần (lần/h)","Ghi chú"],DB.bangF1.hang,function(r){
+return [esc(r.loai_phong_khong_gian),"<b>"+esc(r.so_lan_trao_doi)+"</b>",esc(r.ghi_chu||"")];})
++'</div></details>';
+[["bangA1","Bảng A.1 (tr.39)"],["bangA2","Bảng A.2 (tr.40–41)"]].forEach(function(x){
+L+='<details class="acc"><summary>'+x[1]+' — Thông số tính toán trong nhà</summary><div class="body">'
++tbl(["Điều kiện","Phòng","t° tiện nghi","t° cho phép","v gió tiện nghi","v gió tối đa","Độ ẩm %"],DB[x[0]].hang,function(r){
+return [esc(r.mua),esc(r.phong),esc(r.nhiet_do_tien_nghi)+" °C",esc(r.nhiet_do_gioi_han_cho_phep)+" °C",
+esc(r.toc_do_gio_tien_nghi)+" m/s",esc(r.toc_do_gio_toi_da_cho_phep)+" m/s",esc(r.do_am_tuong_doi)+" %"];})
++'</div></details>';
+});
+L+='<details class="acc"><summary>Bảng G.1 — Chênh lệch áp suất chống khói (tr.77)</summary><div class="body">'
++tbl(["Loại công trình","Chiều cao trần (m)","ΔP (Pa)"],DB.bangG1.hang,function(r){
+return [esc(r.doi_tuong),esc(r.chieu_cao_tran),"<b>"+esc(r.chenh_lech_ap_suat)+"</b>"];})
++'</div></details>';
+L+='<details class="acc"><summary>Bảng H.1 — Hệ số theo chiều rộng cửa (tr.79)</summary><div class="body">'
++tbl(["Loại công trình","Chiều rộng cửa","Hệ số"],DB.bangH1.hang,function(r){
+return [esc(r.loai_cong_trinh),esc(r.chieu_rong_cua),"<b>"+esc(r.he_so)+"</b>"];})
++'</div></details>';
+L+='<details class="acc"><summary>Phân loại van (Điều 3.32–3.34)</summary><div class="body">';
+DB.van_types.forEach(function(t){L+='<p><b>'+esc(t.loai_van)+'</b><br><span class="small">'+esc(t.dinh_nghia)+'</span></p>';});
+L+='<p class="small">Van ngăn cháy gồm 3 dạng: thường mở (đóng khi có cháy) · thường đóng (mở khi có cháy/sau cháy) · kép.</p></div></details>';
+L+='<details class="acc"><summary>Hệ thống bảo vệ chống khói — Điều 7</summary><div class="body">';
+DB.dieu7_systems.forEach(function(x){
+L+='<div class="hit"><div class="t">'+esc(x.loai_he_thong)+' <span class="small">['+esc(x.dieu_khoan||"")+']</span></div><div class="d">'+esc(x.mo_ta_ngan)+'</div></div>';});
+L+='</div></details>';
+L+='<details class="acc"><summary>Phân loại hệ thống ĐHKK — Điều 4.7.1 &amp; Hình 1 (tr.15–16)</summary><div class="body"><ul>'
++DB.dieu47.map(function(d){return "<li>"+esc(d.noi_dung)+"</li>";}).join("")+'</ul>'
++'<p class="small">Cấp TSTT ngoài trời (5.2.2): Cấp I (m=35 h/năm) — đặc biệt quan trọng · Cấp II (m=150–200 h/năm) — thông thường · Cấp III (m=350–400 h/năm) — không đòi hỏi cao.</p></div></details>';
+L+='<details class="acc"><summary>Phụ lục D — Giới hạn tiếp xúc hóa chất/bụi (tr.66–69)</summary><div class="body"><ul>'
++DB.bangD.map(function(b){return "<li><b>"+esc(b.ten_bang)+"</b> — "+esc(b.tieu_de)+" <span class='small'>(tr."+esc(b.trang)+")</span></li>";}).join("")
++'</ul><p class="small">Chi tiết từng chất xem trực tiếp trong văn bản tiêu chuẩn.</p></div></details>';
+document.getElementById("lib").innerHTML=L;
+})();
+</script>
+</main>
+<footer>
+<p>⚠️ Công cụ tra cứu nhanh &amp; tham khảo cá nhân — <b>không thay thế</b> văn bản TCVN 5687:2024 chính thức. Khi thiết kế/thẩm duyệt, luôn đối chiếu văn bản gốc theo số trang ghi kèm.</p>
+<p>Dữ liệu trích từ TCVN 5687:2024 (Xuất bản lần 1, Hà Nội 2024).</p>
+</footer>
+</body>
+</html>
