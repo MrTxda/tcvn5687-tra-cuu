@@ -1,7 +1,26 @@
 # TCVN 5687:2024 — Tra cứu nhanh TG-ĐHKK
 
 Công cụ tra cứu nhanh tiêu chuẩn **TCVN 5687:2024** *Thông gió – Điều hòa không khí: Yêu cầu thiết kế*,
-gồm **web app 1 file HTML** (mở là chạy, offline 100%, dùng tốt trên điện thoại) và **chương trình dòng lệnh Python**.
+gồm **web app** (dùng trên trình duyệt, offline 100%) và **chương trình dòng lệnh Python**.
+
+## Dùng online
+
+🌐 **https://mrtxda.github.io/tcvn5687-tra-cuu/**
+
+*(Bật GitHub Pages cho repo: Settings → Pages → Deploy from a branch → main / (root). Repo private cần tài khoản Pro mới dùng được Pages; nếu không, chuyển repo sang Public.)*
+
+## Dùng offline (không cần mạng)
+
+Tải file `web/index.html` (bản 1 file duy nhất, dữ liệu nhúng sẵn) về máy/điện thoại → mở bằng trình duyệt là dùng ngay.
+
+Hoặc tự build từ mã nguồn:
+
+```bash
+git clone https://github.com/MrTxda/tcvn5687-tra-cuu.git
+cd tcvn5687-tra-cuu
+python3 web/build.py            # -> web/index.html (bản offline 1 file)
+python3 web/build.py --split    # -> index.html + data/tcvn5687_data.js (bản online)
+```
 
 ## Tuyên bố miễn trách nhiệm
 
@@ -13,7 +32,7 @@ gồm **web app 1 file HTML** (mở là chạy, offline 100%, dùng tốt trên 
 
 ## Dùng web app
 
-Mở file [`web/index.html`](web/index.html) bằng trình duyệt (máy tính/điện thoại) — không cần mạng, không cần cài đặt.
+Mở file [`web/index.html`](web/index.html) bằng trình duyệt (máy tính/điện thoại) — 1 file duy nhất, không cần mạng, không cần cài đặt. Trên GitHub, bản online dùng file [`index.html`](index.html) ở thư mục gốc (nạp dữ liệu từ `data/tcvn5687_data.js`, cùng nội dung).
 
 | Tab | Chức năng |
 |-----|-----------|
